@@ -4,7 +4,7 @@
 
 $font-title: 'Wawati SC', 'Bradly Hand';
 
-.fixed-post, .fixed-myPage, .fixed-logout, .fixed-menu {
+.fixed-post, .fixed-myPage, .fixed-logout, .fixed-menu, .fixed_details {
     position: fixed;
     right: 0px;
     margin: 0;
@@ -26,6 +26,10 @@ $font-title: 'Wawati SC', 'Bradly Hand';
 
 .fixed-menu {
     top : 250px;
+}
+
+.fixed_details {
+    top : 280px;
 }
 
 .header-img {

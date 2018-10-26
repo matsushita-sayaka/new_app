@@ -19,10 +19,27 @@
 <%= debug(params) if Rails.env.development? %>
 
 <% if signed_in? %>
-  <%= link_to "投稿", '#', class: "fixed-post" %>
-  <%= link_to "My Page", current_user, class: "fixed-myPage" %>
-  <%= link_to "Logout", destroy_user_session_path, method: "delete", class: "fixed-logout" %>
-  <%= link_to "Menu", '#', class: "fixed-menu" %>
+  <ul>
+    <li><%= link_to "投稿", '#', class: "fixed-post" %></li>
+    <li><%= link_to "My Page", current_user, class: "fixed-myPage" %></li>
+    <li><%= link_to "Logout", destroy_user_session_path, method: "delete", class: "fixed-logout" %></li>
+    <li id="fat-menu" class="dropdown">
+        <a href="#" class="dropdown-toggle fixed-menu" data-toggle="dropdown">
+          Menu <b class="caret"></b>
+        </a>
+        <ul class="dropdown-menu fixed_details">
+          <li><%= link_to "がくしゅう", '#' %></li>
+          <li><%= link_to "けんこう", '#' %></li>
+          <li><%= link_to "りょうり", '#' %></li>
+          <li><%= link_to "おでかけ", '#' %></li>
+          <li><%= link_to "くらし", '#' %></li>
+          <li><%= link_to "りょこう", '#' %></li>
+          <li><%= link_to "etc...", '#' %></li>
+          <li><%= link_to "投稿index", '#' %></li>
+          <li><%= link_to "Member list", users_path %></li>
+        </ul>
+    </li>
+  </ul>
 <% end %> 
   
 <script>

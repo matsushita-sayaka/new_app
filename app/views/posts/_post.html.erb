@@ -1,0 +1,8 @@
+<li>
+    <%= post.category %>
+    <%= post.title %>
+    <%= post.main_content %>
+    <span class="timestamp">
+        Posted <%= time_ago_in_words(post.created_at) %> ago
+    </span>
+</li>
