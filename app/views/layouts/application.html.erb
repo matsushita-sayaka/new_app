@@ -11,12 +11,41 @@
 </head>
 <body>
   <%= render 'layouts/header' %>
-  <div class="container">
     
     <% flash.each do |key, value| %>
       <div class="alert <%= bootstrap_class_for(key) %>"><%= value %></div>
     <% end %>
 <%= yield %>
-</div>
+<%= debug(params) if Rails.env.development? %>
+
+<% if signed_in? %>
+  <%= link_to "投稿", '#', class: "fixed-post" %>
+  <%= link_to "My Page", current_user, class: "fixed-myPage" %>
+  <%= link_to "Logout", destroy_user_session_path, method: "delete", class: "fixed-logout" %>
+  <%= link_to "Menu", '#', class: "fixed-menu" %>
+<% end %> 
+  
+<script>
+  $(function() {
+    $('.login-img').hover(
+      function() {
+        $(this).css({'left':'0', 'bottom':'0'});
+      },
+      function() {
+        $(this).css({'left':'-112px', 'bottom': '-100px'});
+      }
+    );
+    
+    $('.signUp-img').hover(
+      function() {
+        $(this).css({'right':'0', 'top':'0'});
+      },
+      function() {
+        $(this).css({'right':'0', 'top': '-120px'});
+      }
+    );
+    
+  });
+</script>
 </body>
 </html>

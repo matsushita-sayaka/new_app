@@ -1,3 +1,56 @@
+<div class="container">
+    
+    <div id="top-img">
+        <%= image_tag 'home/img/img-1.jpg', class: 'top-img' %>
+    </div>
+    <div class="proverb">
+        <h4>••• 本日のこそだての格言 •••</h4>
+    </div>
+    <div class="menu">
+        <p>MENU</p>
+        <div class="row">
+            <div class="col-md-4">
+                <%= image_tag 'home/menu/learn.png', class: 'menu-img' %>
+                <p class="text-center">がくしゅう</p>
+            </div>
+            <div class="col-md-4">
+                <%= image_tag 'home/menu/cook.png', class: 'menu-img' %>
+                <p class="text-center">りょうり</p>
+            </div>
+            <div class="col-md-4">
+                <%= image_tag 'home/menu/life.png', class: 'menu-img' %>
+                <p class="text-center">くらし</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4">
+                <%= image_tag 'home/menu/trip.png', class: 'menu-img' %>
+                <p class="text-center">りょこう</p>
+            </div>
+            <div class="col-md-4">
+                <%= image_tag 'home/menu/out.png', class: 'menu-img' %>
+                <p class="text-center">おでかけ</p>
+            </div>
+            <div class="col-md-4">
+                <%= image_tag 'home/menu/etc.png', class: 'menu-img' %>
+                <p class="text-center">etc...</p>
+            </div>
+        </div>
+    </div>
+    <div class="pick-up">
+        <p>Pick Up</p>
+        <div class="row">
+            <div class="col-md-4">
+            </div>
+        </div>
+    </div>
+</div>
 
-<h1>StaticPages#home</h1>
-<p>Find me in app/views/static_pages/home.html.erb</p>
+<div id="fixed">
+    <div id="signUp-img">
+        <%= link_to image_tag('home/home-signUp.png', class: "signUp-img") , new_user_registration_path %>
+    </div>
+    <div id="login-img">
+        <%= link_to image_tag('home/home-login.png', class: "login-img") , new_user_session_path %>
+    </div>
+</div>

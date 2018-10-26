@@ -1,3 +1,77 @@
 // Place all the styles related to the StaticPages controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+$font-title: 'Wawati SC', 'Bradly Hand';
+
+.fixed-post, .fixed-myPage, .fixed-logout, .fixed-menu {
+    position: fixed;
+    right: 0px;
+    margin: 0;
+    z-index: 100;
+}
+
+.fixed-post {
+    top : 100px;
+}
+
+.fixed-myPage {
+    top : 150px;
+}
+
+.fixed-logout {
+    top : 200px;
+} 
+
+
+.fixed-menu {
+    top : 250px;
+}
+
+.header-img {
+    width: 50px;
+}
+
+.header-text {
+    font-size: 50px;
+    font-family: $font-title;
+    span {
+        font-size: 30px;
+        font-family: $font-title;
+    }
+}
+
+.top-img {
+    width: 100%;
+}
+
+.menu-img {
+    width: 100%;
+    background: gray;
+}
+
+#fixed {
+    .signUp-img {
+        width: 200px;
+        height: 200px;
+        position: fixed;
+        top: -120px;
+        right: 0px;
+        margin: 0;
+        z-index: 100;
+    }
+    .login-img {
+        width: 200px;
+        height: 200px;
+        position: fixed;
+        bottom: -100px;
+        left: -112px;
+        margin: 0;
+        z-index: 100;
+    }
+    #signUp-img, #login-img {
+        position: absolute;
+        top: 8px;
+        left: 13px;
+    }
+}

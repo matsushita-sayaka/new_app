@@ -1,0 +1,8 @@
+<% provide(:title, @user.name) %>
+<% if @user.image? %>
+<%= image_tag @user.image.thumb.url %>
+<% else %>
+<%= image_tag 'user/user-face.png' %>
+<% end %>
+<%= @user.name %>
+<%= @user.email %>
