@@ -22,22 +22,25 @@
         </div>
         <div class="col-sm-8">
             <% @user ||= current_user %>
-            <%= link_to "frinds list", friends_list_user_path(@user) %> <%= @accepts.count %>
+            
              <% if @accepts.any? %>
+             <%= link_to "frinds list", friends_list_user_path(@user) %> <%= @accepts.count %>
              <% @accepts.each do |accept| %>
-             <%= accept.user_id %>
+             <p><%= accept.user_id %></p>
              <% end %>
              <% end %>
              
              
-             <p>友達リクエストが届きました！</p>
+             
              <% if @waits.any? %>
+             <p>友達リクエストが届きました！</p>
              <% @waits.each do |wait| %>
              <%= wait.user_id %>
              <% end %>
              <% end %>
-             <p>友達リクエストを届けました！</p>
+             
              <% if @keeps.any? %>
+             <p>友達リクエストを届けました！</p>
              <% @keeps.each do |keep| %>
              <%= keep.user_id_rq %>
              <% end %>

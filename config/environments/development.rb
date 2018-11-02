@@ -21,8 +21,8 @@ MyApp::Application.configure do
   :address => 'smtp.gmail.com',
   :port => 587,
   :domain => 'c9.io',
-  :user_name => ENV['nagotaku0424@gmail.com'],
-  :password => ENV['moxxkksmbjkxkllj'],
+  :user_name => ENV['SMTP_MAIL'],
+  :password => ENV['SMTP_PASS'],
   :authentication => :plain,
   :enable_starttls_auto => true
 }

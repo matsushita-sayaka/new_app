@@ -13,7 +13,7 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @accept_all = Friend.where(status: "accept")
     @accepts = @accept_all.where("user_id = ? OR user_id_rq = ?", current_user, current_user)
-    @waits = current_user.friends.where(status: "wait"). where(user_id_rq: current_user.id)
+    @waits = Friend.where(status: "wait").where(user_id_rq: current_user.id)
     @keeps = current_user.friends.where(status: "wait"). where(user_id: current_user.id)
     @posts = current_user.posts.paginate(page: params[:page])
     @comments = current_user.comments
@@ -33,6 +33,11 @@ class UsersController < ApplicationController
   end 
   
   def friends_list
+    @friend = current_user.friends.new
+    @accept_all = Friend.where(status: "accept")
+    @accepts = @accept_all.where("user_id = ? OR user_id_rq = ?", current_user, current_user)
+    @waits = Friend.where(status: "wait").where(user_id_rq: current_user.id)
+    @keeps = current_user.friends.where(status: "wait"). where(user_id: current_user.id)
   end
   
   private

@@ -1,2 +1,32 @@
 <% provide(:title, 'friends_list') %>
 <%= image_tag 'user/user-line.png', class: 'user-line-img' %>
+<div class="container">
+<p class="title">Friends List</p>
+
+<ul class="users">
+        <% if @accepts.any? %>
+             <% @accepts.each do |accept| %>
+             <%= accept.user_id %>
+             <% end %>
+             <% end %>
+             
+             
+             <% if @waits.any? %>
+             <p>友達リクエストが届きました！</p>
+             <% @waits.each do |wait| %>
+             <%= wait.user_id %>
+                 <%= form_for @friend do |f| %>
+                    <%= f.hidden_field :status, :value => "accept" %>
+                    <%= f.submit "友達になる！", class: "btn btn-lg submit" %>
+                <% end %>
+             <% end %>
+             <% end %>
+             <p>友達リクエストを届けました！</p>
+             <% if @keeps.any? %>
+             <% @keeps.each do |keep| %>
+             <%= keep.user_id_rq %>
+             <% end %>
+             <% end %>
+    </ul>
+  </div>  
+  

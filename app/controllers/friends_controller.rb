@@ -9,9 +9,15 @@ class FriendsController < ApplicationController
     else
         render :back
     end
-  end 
+  end
   
-  private
+  def update
+    if Friend.update_attributes(friend_params)
+      redirect_to users_path
+    else 
+      render :back
+    end
+  end
   
   def friend_params
     params.require(:friend).permit(:user_id_rq, :user_id, :message, :status)
