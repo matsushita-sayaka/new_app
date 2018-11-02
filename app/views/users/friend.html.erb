@@ -1,0 +1,28 @@
+<% provide(:title, 'friendリクエスト') %>
+<%= image_tag 'user/user-line.png', class: 'user-line-img' %>
+<div class="container">
+  <h2 class="title">Friend Request</h2>
+  
+  <%= form_for @friend do |f| %>
+    <%= f.hidden_field :user_id_rq, :value => @user.id %>
+    <%= f.hidden_field :status, :value => "wait" %>
+    <div class="row">
+      <div class="col-md-8 col-md-offset-2">
+        <%= render 'shared/error_messages', object: f.object %>
+        
+        <div class="field">
+          <%= f.label :message, class: "control-label" %>
+          <%= f.text_area :message, autofocus: true, class: "form-control" %>
+        </div>
+        
+      </div>
+    </div>
+    <div class="row">
+        <div class="col-md-4 col-md-offset-2">
+            <div class="actions">
+              <%= f.submit "友達リクエストを送る", class: "btn btn-lg submit" %>
+            </div>
+        </div>
+    </div>
+  <% end %>
+</div>

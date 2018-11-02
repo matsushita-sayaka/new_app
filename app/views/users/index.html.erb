@@ -1,7 +1,16 @@
 <% provide(:title, 'Member list') %>
 <%= image_tag 'user/user-line.png', class: 'user-line-img' %>
 <div class="container">
-    <h1>Member list</h1>
+    <h1 class="title">Member list</h1>
+    <div class="surch">
+        <%= form_tag(users_path, method: "get") do |f| %>
+                <div class="surch-submit">
+                    <input type="submit" value="search">
+                </div>
+                <input type="text" name="name">
+        <% end %>
+        <div class="clear"></div>
+    </div>
 
     <%= will_paginate renderer: BootstrapPagination::Rails %>
     

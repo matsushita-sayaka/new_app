@@ -2,30 +2,87 @@
 <%= image_tag 'user/user-line.png', class: 'user-line-img' %>
 <div class="container">
     <div class="row">
-        <%= @user.message %>
-        <div class="col-sm-4">
+        <div class="col-sm-12 user-message">
+        <p><%= @user.message %></p>
+        </div>
+        </div>
+        <div class="row">
+        <div class="col-sm-4 text-center">
             <% if @user.image? %>
-                <%= image_tag @user.image.thumb.url %>
+                <%= image_tag @user.image.thumb.url, class: 'show-user-face-img' %>
             <% else %>
                 <%= image_tag 'user/user-face.png', class: 'show-user-face-img' %>
             <% end %>
-            <%= @user.name %>
-            <%= link_to "編集", edit_user_registration_path %>
+            <%= @user.name %></br>
+            <% if current_user == @user %>
+                <%= link_to "編集", edit_user_registration_path %>
+            <% else %>
+                <%= link_to "Friendリクエストを送る", friend_user_path %>
+            <% end %>
         </div>
         <div class="col-sm-8">
+            <% @user ||= current_user %>
+            <%= link_to "frinds list", friends_list_user_path(@user) %> <%= @accepts.count %>
+             <% if @accepts.any? %>
+             <% @accepts.each do |accept| %>
+             <%= accept.user_id %>
+             <% end %>
+             <% end %>
+             
+             
+             <p>友達リクエストが届きました！</p>
+             <% if @waits.any? %>
+             <% @waits.each do |wait| %>
+             <%= wait.user_id %>
+             <% end %>
+             <% end %>
+             <p>友達リクエストを届けました！</p>
+             <% if @keeps.any? %>
+             <% @keeps.each do |keep| %>
+             <%= keep.user_id_rq %>
+             <% end %>
+             <% end %>
+             </br>
             <%= link_to "Member list", users_path %>
+            <%= link_to "友達を招待する", new_invite_path %>
         </div>
     </div>
     <div class="row">
-        <div class="col-sm-12">
-            <% if @user.posts.any? %>
-                <h3>投稿一覧 <%= @user.posts.count %></h3>
-                <ol class="posts">
-                    <%= render @posts %>
-                </ol>
-                <%= will_paginate @posts, renderer: BootstrapPagination::Rails %>
+        <section class="py-5">
+        <div class="container">
+          <ul class="nav nav-pills nav-fill">
+            <li class="nav-item"><a href="#posts" class="nav-link active" data-toggle="tab">投稿　<%= @user.posts.count %></a></li>
+            <li class="nav-item"><a href="#likes" class="nav-link" data-toggle="tab">お気に入り　<%= @user.likes.count %></a></li>
+            <li class="nav-item"><a href="#comments" class="nav-link" data-toggle="tab">コメント　<%= @user.comments.count %></a></li>
+          </ul>
+          <div class="tab-content">
+            <div id="posts" class="tab-pane active">
+                <% if @user.posts.any? %>
+                    <ul class="post-index">
+                    <%= render partial: 'posts/post', collection: @posts %>
+                    </ul>
                 <% end %>
+                <%= will_paginate @posts, renderer: BootstrapPagination::Rails %>
+            </div>
+            <div id="likes" class="tab-pane">
+             <% @likes.each do |like| %>
+             <%= like.post_id %>
+             <% end %>
+            </div>
+            <div id="comments" class="tab-pane">
+                <% if @user.comments.any? %>
+                  <% @comments.each do |comment| %>
+                  <%= comment.post_id %>
+                  <% end %>
+                      <ul class="post-index">
+                      
+                      </ul>
+                 
+                <% end %>
+            </div>
+          </div>
         </div>
+      </section>
     </div>
 </div>
             

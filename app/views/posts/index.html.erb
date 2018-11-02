@@ -1,2 +1,38 @@
-<h1>Posts#index</h1>
-<p>Find me in app/views/posts/index.html.erb</p>
+<% provide(:title, '投稿index') %>
+<%= image_tag 'user/user-line.png', class: 'user-line-img' %>
+<div class="container">
+    
+    <div class="post-sample">
+    <p class="title">Sample</p>
+        <div class="row post-contents">
+            <div class="col-md-3 text-center picture-content">
+               <%= image_tag 'post/index-sample.png', class: 'index-sample-img' %><span>投稿写真</span>
+            </div>
+            <div class="col-md-4 col-sm-5 post-content">
+                <p>●投稿タイトル</p>
+                <p>投稿内容のまとめ</br>☆詳しい内容はクリックしてね！</p>
+                </br>
+                <p><%= image_tag 'post/sample-user.png', class: 'sample-user-img' %>投稿者さん </p>
+            </div>
+            <div class="col-md-4 col-sm-5 likes-content-comment text-right">
+                <p class="text-left">クリックしてお気に入りに登録するとピンク色になるよー</br>
+                数字はみんながお気に入りをした数だよ‼︎</p>
+                </br>
+            </div>
+            <div class="col-md-1 col-sm-2 text-right like-box likes-content">
+                <p class="category">カテゴリー</p>
+                <%= image_tag 'post/category.png', class: 'category-img' %>
+                <p class="likes-count">10</p>
+                <%= image_submit_tag 'post/like.png', class: 'like-img' %>
+            </div>
+        </div> 
+    </div>
+    <p class="j-title">投稿一覧</p>
+    <ul class="post-index">
+            <%= render @posts %>
+    </ul>
+    
+        
+        
+    </div>
+</div>

@@ -6,6 +6,52 @@
   box-sizing: border-box;
 }
 
+@mixin decoration($weight, $color) {
+  padding: .25em 0 .25em .75em;
+  border-left: $weight solid $color;
+}
+
+.clear {
+  clear: both;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+a {
+  color: #7d7b83;
+  &:hover {
+    color: #7d7b83;
+  }
+}
+
+.container {
+  margin-top: 20px;
+}
+body {
+  font-family: 'Hannotate SC', 'Bradly Hand';
+}
+
+.dropdown-menu {
+  text-align: right;
+}
+
+.title {
+    @include decoration(6px, #ccc);
+    font-size: 25px;
+    font-family: Papyrus;
+    margin: 20px 0;
+}
+
+.j-title {
+    @include decoration(6px, #ccc);
+    font-size: 25px;
+    margin: 20px 0;
+}
+
 /* miscellaneous */
 
 .debug_dump {

@@ -11,7 +11,49 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20181026032348) do
+ActiveRecord::Schema.define(version: 20181102022435) do
+
+  create_table "comments", force: true do |t|
+    t.integer  "user_id"
+    t.integer  "post_id"
+    t.text     "content"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "friends", force: true do |t|
+    t.integer  "user_id"
+    t.integer  "user_id_rq"
+    t.string   "status"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.text     "message"
+  end
+
+  add_index "friends", ["user_id", "user_id_rq"], name: "index_friends_on_user_id_and_user_id_rq", unique: true
+
+  create_table "ingredients", force: true do |t|
+    t.integer  "user_id"
+    t.integer  "check_box"
+    t.integer  "recipe_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "invites", force: true do |t|
+    t.integer  "user_id"
+    t.string   "email"
+    t.text     "message"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "likes", force: true do |t|
+    t.integer  "user_id"
+    t.integer  "post_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "post_details", force: true do |t|
     t.integer  "post_id"
@@ -33,6 +75,32 @@ ActiveRecord::Schema.define(version: 20181026032348) do
   end
 
   add_index "posts", ["user_id", "created_at"], name: "index_posts_on_user_id_and_created_at"
+
+  create_table "recipes", force: true do |t|
+    t.string   "ingredient"
+    t.string   "amount"
+    t.string   "prepare"
+    t.string   "breakdown"
+    t.string   "menu_title"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "sentences", force: true do |t|
+    t.text     "proverb"
+    t.string   "speaker"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "surveys", force: true do |t|
+    t.integer  "user_id"
+    t.string   "category"
+    t.integer  "question_1"
+    t.integer  "question_2"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "users", force: true do |t|
     t.string   "email",                  default: "",    null: false

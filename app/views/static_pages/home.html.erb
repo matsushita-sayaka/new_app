@@ -1,50 +1,34 @@
+<%= image_tag 'user/user-line.png', class: 'user-line-img' %>
 <div class="container">
     
     <div id="top-img">
         <%= image_tag 'home/img/img-1.jpg', class: 'top-img' %>
     </div>
-    <div class="proverb">
-        <h4>••• 本日のこそだての格言 •••</h4>
+    <div class="row proverb">
+        <h3>■ 本日のこそだての格言</h3>
+        <div class="col-sm-8 sentence">
+            <%= @sentence[0] %>
+        </div>
+        <div class="col-sm-4 text-right sentence">
+            <%= @sentence[1] %>          
+        </div>
     </div>
     <div class="menu">
-        <p>MENU</p>
-        <div class="row">
-            <div class="col-sm-4 col-md-3">
-                <%= image_tag 'home/menu/learn.png', class: 'menu-img' %>
-                <p class="text-center">がくしゅう</p>
-            </div>
-            <div class="col-sm-4 col-md-3">
-                <%= image_tag 'home/menu/cook.png', class: 'menu-img' %>
-                <p class="text-center">りょうり</p>
-            </div>
-            <div class="col-sm-4 col-md-3">
-                <%= image_tag 'home/menu/life.png', class: 'menu-img' %>
-                <p class="text-center">くらし</p>
-            </div>
-       
-        
-            <div class="col-sm-4 col-md-3">
-                <%= image_tag 'home/menu/trip.png', class: 'menu-img' %>
-                <p class="text-center">りょこう</p>
-            </div>
-            <div class="col-sm-4 col-md-3">
-                <%= image_tag 'home/menu/out.png', class: 'menu-img' %>
-                <p class="text-center">おでかけ</p>
-            </div>
-            <div class="col-sm-4 col-md-3">
-                <%= image_tag 'home/menu/etc.png', class: 'menu-img' %>
-                <p class="text-center">etc...</p>
-            </div>
-        </div>
+        <p class="title">MENU</p>
+        <p>こそだて情報を7つのカテゴリーにわけて紹介しています！投稿やコメント、友達リクエスト...などなど色々な方法で情報交換もできるよ！<br/>
+        どんな内容かは「くまさん」に聞いてみてね☆</p>
+        <%= render 'static_pages/menu' %>
     </div>
-    <div class="pick-up">
-        <p>Pick Up</p>
-        <div class="row">
-            <div class="col-md-4">
-            </div>
-        </div>
-    </div>
+    <div class="row">
+        <% if @posts.any? %>
+        <p class="title">Pick Up</p>
+            <ul class="menu-posts">
+            <%= render partial: 'shared/post', collection: @posts %>
+            </ul>
+        <% end %>
+    </div> 
 </div>
+
 
 <div id="fixed">
     <div id="signUp-img">

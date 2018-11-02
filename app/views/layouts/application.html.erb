@@ -20,7 +20,7 @@
 
 <% if signed_in? %>
   <ul>
-    <li><%= link_to "投稿", '#', class: "fixed-post" %></li>
+    <li><%= link_to "投稿", new_post_path, class: "fixed-post" %></li>
     <li><%= link_to "My Page", current_user, class: "fixed-myPage" %></li>
     <li><%= link_to "Logout", destroy_user_session_path, method: "delete", class: "fixed-logout" %></li>
     <li id="fat-menu" class="dropdown">
@@ -28,15 +28,15 @@
           Menu <b class="caret"></b>
         </a>
         <ul class="dropdown-menu fixed_details">
-          <li><%= link_to "がくしゅう", '#' %></li>
-          <li><%= link_to "けんこう", '#' %></li>
-          <li><%= link_to "りょうり", '#' %></li>
-          <li><%= link_to "おでかけ", '#' %></li>
-          <li><%= link_to "くらし", '#' %></li>
-          <li><%= link_to "りょこう", '#' %></li>
-          <li><%= link_to "etc...", '#' %></li>
-          <li><%= link_to "投稿index", '#' %></li>
+          <li><%= link_to "投稿index", posts_path %></li>
           <li><%= link_to "Member list", users_path %></li>
+          <li><%= link_to "がくしゅう", learns_path %></li>
+          <li><%= link_to "けんこう", healths_path %></li>
+          <li><%= link_to "りょうり", cooks_path %></li>
+          <li><%= link_to "おでかけ", goes_path %></li>
+          <li><%= link_to "くらし", lifes_path %></li>
+          <li><%= link_to "りょこう", travels_path %></li>
+          <li><%= link_to "etc...", others_path %></li>
         </ul>
     </li>
   </ul>
@@ -62,6 +62,44 @@
       }
     );
     
+        $('.recipe-more').click(function() {
+      var $more = $(this).find('.recipe-contain');
+      if($more.hasClass('open')) {
+        $more.removeClass('open');
+        $more.slideUp();
+        $(this).find('.recipe-click').text('+ recipe & ingredient +');
+      }else {
+        $more.addClass('open');
+        $more.slideDown();
+        $(this).find('.recipe-click').text('- close');
+      }
+      });
+    
+    $('[data-toggle="tooltip"]').tooltip({html: true});
+    
+    $('.info').click(function() {
+      var $more = $(this).find('.more-info');
+      if($more.hasClass('open')) {
+        $more.removeClass('open');
+        $more.slideUp();
+        $(this).find('span').text('+ more info');
+      }else {
+        $more.addClass('open');
+        $more.slideDown();
+        $(this).find('span').text('- close');
+      }
+      });
+      // var count = setInterval(changeImg, 2000);//2秒間隔
+      // i = 1;
+      // function changeImg(){
+      //     $("#top-img").children("img").attr("src","/home/img/img-" + i + ".jpg");
+      //     if(i <= 2){
+      //         i++;
+      //     }
+      //     else{
+      //         i = 1;
+      //     }
+      // }
   });
 </script>
 </body>

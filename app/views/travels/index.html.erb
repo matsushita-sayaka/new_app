@@ -1,0 +1,114 @@
+<% provide(:title, 'りょこう') %>
+<%= image_tag 'main-line.png', class: 'user-line-img' %>
+<div class="container">
+    <div class="row">
+        <div class="col-xs-4 col-offset-1">
+            <div class="menu-title"><%= image_tag 'shared-menu/menu-title.png', class: 'menu-title-img' %><p>りょこう</p></div>
+            <%= image_tag 'home/menu/learn.png', class: 'menu-detail-img' %>
+        </div>
+        <div class="col-xs-8 survey">
+            <h4 class="text-center"><%= image_tag 'shared-menu/star.png', class: 'star-img' %>みんなの投票掲示板</h4>
+            <%= form_for @survey do |f| %>
+                <div class="row position-center">
+                    <p><%= image_tag 'shared-menu/q.png', class: 'q-img' %><span class="survey-number">1.</span>旅行の計画はいつ立てる？</p>
+                    <%= f.hidden_field :category, :value => "travel" %>
+                        <div class="select-answerQ1">
+                            <%= f.radio_button( 'question_1', 1 , {id: 'q-1-1'}) %>
+                                <label for="q-1-1">
+                                    <span>★1ヶ月以上前</span>
+                                    <div class="answer">
+                                        <%= image_tag 'shared-menu/cup1.png', class: 'cup-img' %>
+                                        <% survey = @surveys.where(question_1: 1).count %>
+                                        <p><%= survey %></p>
+                                    </div>
+                                </label>
+                            <%= f.radio_button( 'question_1', 2 , {id: 'q-1-2'}) %>
+                                <label for="q-1-2">
+                                    <span>★思い立ったとき</span>
+                                    <div class="answer">
+                                        <%= image_tag 'shared-menu/cup1.png', class: 'cup-img' %>
+                                        <% survey = @surveys.where(question_1: 2).count %>
+                                        <p><%= survey %></p>
+                                    </div>
+                                </label>
+                            <%= f.radio_button( 'question_1', 3 , {id: 'q-1-3'}) %>
+                                <label for="q-1-3">
+                                    <span>★１週間前</span>
+                                    <div class="answer">
+                                        <%= image_tag 'shared-menu/cup1.png', class: 'cup-img' %>
+                                        <% survey = @surveys.where(question_1: 3).count %>
+                                        <p><%= survey %></p>
+                                    </div>
+                                </label>
+                            <%= f.radio_button( 'question_1', 4 , {id: 'q-1-4'}) %>
+                                <label for="q-1-4">
+                                    <span>★etc.</span>
+                                    <div class="answer">
+                                        <%= image_tag 'shared-menu/cup1.png', class: 'cup-img' %>
+                                        <% survey = @surveys.where(question_1: 4).count %>
+                                        <p><%= survey %></p>
+                                    </div>
+                                </label>
+                        </div>
+                </div>
+                <div class="row position-center">
+                    <p><%= image_tag 'shared-menu/q.png', class: 'q-img' %><span class="survey-number">2.</span>家族で行きたいとこは？</p>
+                        <div class="select-answerQ1">
+                            <%= f.radio_button( 'question_2', 1 , {id: 'q-2-1'}) %>
+                                <label for="q-2-1">
+                                    <span>★海外</span>
+                                    <div class="answer">
+                                        <%= image_tag 'shared-menu/cup1.png', class: 'cup-img' %>
+                                        <% survey = @surveys.where(question_2: 1).count %>
+                                        <p><%= survey %></p>
+                                    </div>
+                                </label>
+                            <%= f.radio_button( 'question_2', 2 , {id: 'q-2-2'}) %>
+                                <label for="q-2-2">
+                                    <span>★観光地</span>
+                                    <div class="answer">
+                                        <%= image_tag 'shared-menu/cup1.png', class: 'cup-img' %>
+                                        <% survey = @surveys.where(question_2: 2).count %>
+                                        <p><%= survey %></p>
+                                    </div>
+                                </label>
+                            <%= f.radio_button( 'question_2', 3 , {id: 'q-2-3'}) %>
+                                <label for="q-2-3">
+                                    <span>★温泉</span>
+                                    <div class="answer">
+                                        <%= image_tag 'shared-menu/cup1.png', class: 'cup-img' %>
+                                        <% survey = @surveys.where(question_2: 3).count %>
+                                        <p><%= survey %></p>
+                                    </div>
+                                </label>
+                            <%= f.radio_button( 'question_2', 4 , {id: 'q-2-4'}) %>
+                                <label for="q-2-4">
+                                    <span>★etc.</span>
+                                    <div class="answer">
+                                        <%= image_tag 'shared-menu/cup1.png', class: 'cup-img' %>
+                                        <% survey = @surveys.where(question_1: 4).count %>
+                                        <p><%= survey %></p>
+                                    </div>
+                                </label>
+                        </div>
+                </div>
+                <div class="clear"></div>
+                <div class="row">
+                  <div class="col-md-3 col-md-offset-9">
+                      <%= f.submit "回答する！", class: "btn btn-lg submit" %>
+                  </div>
+                </div>
+            <% end %>
+        </div>
+    </div>
+    <div class="row">
+        <% if @posts.any? %>
+        <p class="title">Pick Up</p>
+            <ul class="menu-posts">
+            <%= render partial: 'shared/post', collection: @posts %>
+            </ul>
+        <% end %>
+    </div>
+</div>
+
+　

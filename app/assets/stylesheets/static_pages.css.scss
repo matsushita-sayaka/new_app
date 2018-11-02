@@ -3,33 +3,41 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 $font-title: 'Wawati SC', 'Bradly Hand';
+@mixin fram($weight, $color) {
+  padding: 1em;
+  border: $weight solid $color;
+  border-radius: 3em .7em 2em .7em/.7em 2em .7em 3em;
+}
+
 
 .fixed-post, .fixed-myPage, .fixed-logout, .fixed-menu, .fixed_details {
     position: fixed;
     right: 0px;
     margin: 0;
     z-index: 100;
+    @include fram(1px, #ccc);
+    font-family: $font-title;
 }
 
 .fixed-post {
-    top : 100px;
+    top : 500px;
 }
 
 .fixed-myPage {
-    top : 150px;
+    top : 560px;
 }
 
 .fixed-logout {
-    top : 200px;
+    top : 680px;
 } 
 
 
 .fixed-menu {
-    top : 250px;
+    top : 620px;
 }
 
 .fixed_details {
-    top : 280px;
+    top : 380px;
 }
 
 .header-img {
@@ -51,7 +59,6 @@ $font-title: 'Wawati SC', 'Bradly Hand';
 
 .menu-img {
     width: 100%;
-    background: gray;
 }
 
 #fixed {
@@ -77,5 +84,63 @@ $font-title: 'Wawati SC', 'Bradly Hand';
         position: absolute;
         top: 8px;
         left: 13px;
+    }
+}
+
+// home
+
+.proverb {
+    @include fram(3px, #ccc);
+    margin: 20px 0;
+    h3 {
+        font-family: $font-title;
+        margin: 5px;
+    }
+    .sentence {
+        font-size: 18px;
+    }
+}
+
+.tooltip-inner {
+    text-align: left;
+    color: #504946;
+    background-color: #efefef;
+    border: #504946;
+    max-width: 100%;
+    padding: 20px;
+}
+
+.tooltip.top .tooltip-arrow {
+    border-top-color: #efefef;
+}
+
+.tooltip.in {
+  opacity: 1;
+  filter: alpha(opacity=100);
+}
+
+.more-info-img {
+    width: 30px;
+    height: 30px;
+}
+
+.more-info {
+    display: none;
+}
+
+.post-img {
+    width: 100%;
+}
+
+.post-title {
+    margin: 5px 0;
+    font-size: 20px;
+    text-align: left;
+}
+
+.info {
+    margin: 10px 0;
+    .more-info {
+        background: #efefef;
     }
 }

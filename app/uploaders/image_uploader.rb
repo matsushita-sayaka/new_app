@@ -59,9 +59,11 @@ class ImageUploader < CarrierWave::Uploader::Base
     process :resize_to_limit => [50, 50]
   end
   
-  version :sm do
-    process :resize_to_limit => [300, 300]
+  version :post do
+    process :resize_to_limit => [480, 360]
   end
+  
+ 
 
   # jpg,jpeg,gif,pngしか受け付けない
   def extension_white_list

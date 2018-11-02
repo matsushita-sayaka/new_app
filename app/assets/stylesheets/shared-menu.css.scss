@@ -1,0 +1,80 @@
+$font-title: 'Wawati SC', 'Bradly Hand';
+
+.menu-detail-img {
+        width: 100%;
+    }
+.menu-title-img {
+        width: 100%;
+    }
+
+.menu-title {
+    position: relative;
+    p {
+    position: absolute;
+    top: 30%;
+    left: 30%;
+    font-size: 30px;
+    font-family: $font-title;
+}
+}
+
+.position-center {
+    margin: 0 auto; 
+}
+.survey {
+    padding: 1em;
+    border: 3px solid #ccc;
+    border-radius: 3em .7em 2em .7em/.7em 2em .7em 3em;
+    margin-top: 15px;
+    p {
+        margin-left: 10px;
+    }
+    .star-img {
+        width: 40px;
+        height: 40px;
+    }
+    .q-img {
+        width: 20px;
+        height: 20px;
+    }
+    .survey-number {
+        vertical-align: middle;
+        font-size: 20px;
+        margin: 0 5px;
+        color: #192f60;
+        font-weight: bold;
+    }
+    .cup-img {
+        width: 40px;
+        height: 40px;
+    }
+    .select-answerQ1 input, .select-answerQ2 input {
+        display: none;
+    }
+    .select-answerQ1 input[type="radio"]:checked + label, 
+    .select-answerQ2 input[type="radio"]:checked + label {
+        color: #942343;
+        font-weight: bold;
+        background: #e6c0c0;
+    }
+    .select-answerQ1 label, .select-answerQ2 label {
+        display: inline-block;
+        margin: 0 2px;
+    }
+    .answer {
+        position: relative;
+        margin: 3px 10px 3px 3px;
+        p {
+            position: absolute;
+            top: 10%;
+            left: 0%;
+            font-size: 25px;
+            color: #993300;
+        }
+    }
+}
+
+.star-img {
+    width: 20px;
+    height: 20px;
+}

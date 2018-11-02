@@ -1,0 +1,60 @@
+<% provide(:title, 'レシピ') %>
+<%= image_tag 'main-line.png', class: 'user-line-img' %>
+<div class="container">
+    <div class="row">
+        <%= link_to ingredients_path, class: 'recipe-link' do %>
+            <%= image_tag 'recipe/tool/cooking-tool1.png', class: 'tool-img' %>  すべての材料と下準備はこちら！
+        <% end %>
+            <div class="main-recipes">
+                <p class="title">Main dish</p>
+                <div class="recipe">
+                    <%= render 'recipes/main1' %>
+                </div>
+                <div class="recipe">
+                    <%= render 'recipes/main2' %>
+                </div>
+                <div class="recipe">
+                    <%= render 'recipes/main3' %>
+                </div>
+                <div class="recipe">
+                    <%= render 'recipes/main4' %>
+                </div>
+                <div class="recipe">
+                    <%= render 'recipes/main5' %>
+                </div>
+            </div>
+            <div class="side-recipes">
+                <p class="title">Side dish</p>
+                <div class="recipe">
+                    <%= render 'recipes/side1' %>
+                </div>
+                <div class="recipe">
+                    <%= render 'recipes/side2' %>
+                </div>
+                <div class="recipe">
+                    <%= render 'recipes/side3' %>
+                </div>
+                <div class="recipe">
+                    <%= render 'recipes/side4' %>
+                </div><div class="recipe">
+                    <%= render 'recipes/side5' %>
+                </div>
+                <div class="recipe">
+                    <%= render 'recipes/side6' %>
+                </div>
+                <div class="recipe">
+                    <%= render 'recipes/side7' %>
+                </div>
+                <div class="recipe">
+                    <%= render 'recipes/side8' %>
+                </div>
+                <div class="recipe">
+                    <%= render 'recipes/side9' %>
+                </div>
+                <div class="recipe">
+                    <%= render 'recipes/side10' %>
+                </div>
+            </div>
+    </div>
+</div>
+

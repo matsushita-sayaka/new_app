@@ -1,8 +1,40 @@
 <li>
-    <%= post.category %>
-    <%= post.title %>
-    <%= post.main_content %>
-    <span class="timestamp">
-        Posted <%= time_ago_in_words(post.created_at) %> ago
-    </span>
+    <div class="row post-contents">
+        <% if @posts.any? %>
+            <% detail = PostDetail.find_by(post_id: post.id) %>
+                <div class="col-md-3 text-center picture-content">
+                  <% if detail.image.present? %>
+                        <%= image_tag detail.image.thumb.url %>
+                    <% else %>
+                        <%= image_tag 'post/index-sample.png', class: 'index-sample-img' %>
+                    <% end %> 
+                </div>
+                <div class="col-md-7 col-sm-9 post-content">
+                    <%= link_to post.title, post %></br></br>
+                    <%= post.main_content %></br></br>
+                    <% if post.user.image? %>
+                        <%= image_tag user.image.thumb.url %>
+                    <% else %>
+                        <%= image_tag 'user/user-face.png', class: 'index-user-face-img' %>
+                    <% end %>
+                    <%= post.user.name %>
+                    <span class="timestamp">　　　Posted <%= time_ago_in_words(post.created_at) %> ago</span>
+                </div>
+                <div class="col-sm-2 text-right like-box likes-content">
+                    <p class="category"><%= post.category %></p>
+                    <%= image_tag 'post/category.png', class: 'category-img' %>
+                    <p class="likes-count"><%= post.likes.count %></p>
+                    <% if current_user.like?(post) %>
+                       <%= link_to like_path(post.id), method: :delete do %>
+                            <%= image_submit_tag 'post/like.png', class: 'like-img' %>
+                        <% end %>
+                    <% else %>
+                        <%= form_for @like do |f| %>
+                        <%= f.hidden_field :post_id, :value => post.id %>
+                            <%= image_submit_tag 'post/unlike.png', class: 'like-img' %>
+                        <% end %>
+                    <% end %>
+                </div>
+        <% end %>
+    </div>
 </li>

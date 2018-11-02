@@ -1,0 +1,8 @@
+<li>
+    <% if detail.image? %>
+        <%= image_tag detail.image.post.url %>
+    <% else %>
+        <%= image_tag 'post/index-sample.png', class: 'index-sample-img' %>
+    <% end %>
+    <p class="detail-content"><%= detail.content %></p>
+</li>

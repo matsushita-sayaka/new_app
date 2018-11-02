@@ -1,27 +1,39 @@
 <% provide(:title, 'login') %>
 <%= image_tag 'user/user-line.png', class: 'user-line-img' %>
 <div class="container">
-  <h2>Log in</h2>
-  <%= image_tag 'user/login.png', class: 'signUp-img' %>
+  <h2 class="title">Log in</h2>
+  <div class="row text-center">
+    <%= image_tag 'user/login.png', class: 'signUp-img' %>
+    <p>こそだてひろばへようこそ！</br>
+    楽しんでいってください</br>
+    みんながあなたからの投稿を待っています<br/>
+    みんなと共有したい情報があればぜひ投稿してね!</p>
+  </div>
   <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
     <div class="row">
-      <div class="col-md-6 col-md-offset-3">
+      <div class="col-sm-8 col-sm-offset-2">
         <div class="field">
-          <%= f.label :email %><br />
-          <%= f.email_field :email, autofocus: true %>
-        </div>
-      
-        <div class="field">
-          <%= f.label :password %><br />
-          <%= f.password_field :password, autocomplete: "off" %>
-        </div>
-
-        <div class="actions">
-          <%= f.submit "Log in", class: "btn btn-large submit" %>
+          <%= f.label :email, class: "control-label" %><br />
+          <%= f.email_field :email, autofocus: true, class: "form-control" %>
         </div>
       </div>
     </div>
+    <div class="row">
+      <div class="col-sm-8 col-sm-offset-2">
+        <div class="field">
+          <%= f.label :password, class: "control-label" %><br />
+          <%= f.password_field :password, autocomplete: "off", class: "form-control" %>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-8 col-sm-offset-2 text-center">
+          <%= f.submit "Log in", class: "btn submit form-control" %>
+      </div>
+    </div>
   <% end %>
-<%= link_to "新規登録はこちら！", new_user_registration_path %>
+  <div class="row text-center signin-link">
+    <%= link_to "新規登録はこちら！", new_user_registration_path %>
+  </div>
 </div>
 

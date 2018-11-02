@@ -1,2 +1,43 @@
-<h1>Posts#edit</h1>
-<p>Find me in app/views/posts/edit.html.erb</p>
+<% provide(:title, '投稿編集') %>
+<%= image_tag 'user/user-line.png', class: 'user-line-img' %>
+<div class="container">
+  <h2 class="j-title">投稿編集</h2>
+  <div class="post-new">
+    <%= nested_form_for(@post) do |f| %>
+      <%= render 'shared/error_messages', object: f.object %>
+      <%= f.hidden_field :user_id, :value => current_user.id %>
+      <div class="field">
+        <%= f.label :category %><br />
+        <%= f.select :category, ["がくしゅう","けんこう","りょうり","おでかけ","くらし","りょこう","etc..."], :selected => @post.category, :class => 'category' %>
+      </div>
+      <div class="field">
+        <%= f.label :title %><br />
+        <%= f.text_field :title %>
+      </div>
+      <div class="field">
+        <%= f.label :main_content %><br />
+        <%= f.text_field :main_content %>
+      </div>
+      <p>●投稿詳細：</p>
+      <%= f.fields_for :post_details do |m| %>
+        <div class="field">
+          <%= f.label :image %><br />
+          <%= m.file_field :image %>
+        </div>
+        <div class="field">
+          <%= f.label :content %><br />
+          <%= m.text_field :content %>
+        </div>
+        <div class="field to-remove">
+          <%=m.link_to_remove 'Delete' %>
+        </div>
+      <% end %>  
+      <div class="field add">
+        <%= f.link_to_add '追加', :post_details , class: "to-add"%>
+      </div>
+      <div class="field post-submit">
+        <%= f.submit "編　集", class: "btn btn-lg submit" %>
+      </div>
+    <% end %>
+  </div>
+</div>

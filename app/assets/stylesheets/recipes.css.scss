@@ -1,0 +1,56 @@
+// Place all the styles related to the Recipes controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.tool-img {
+    width: 50px;
+    height: 50px;
+}
+
+.number-img {
+    width: 30px;
+    height: 30px;
+    margin-right: 5px;
+    vertical-align: middle;
+}
+
+.recipe-contain {
+    display: none;
+    background: #efefef;
+    padding: 10px;
+    .cooking-face-img {
+        width: 20px;
+        height: 20px;
+    }
+    .recipe-img {
+        width: 50%;
+    }
+    .cooking-tool-img {
+        width: 20px;
+        height: 20px;
+    }
+}
+
+.recipe > span {
+    background: #efefef;
+    border-radius: 10px;
+    padding: 5px;
+    margin-right: 10px;
+}
+
+.recipe-click {
+    margin: 10px 0;
+    color: #6c272d;
+    font-weight: bold;
+}
+
+.recipe-how-to-make span {
+    color: #e29399;
+    font-size: 20px;
+}
+
+.recipe-link {
+    border: 3px #ccc solid;
+    padding: 20px;
+    border-radius: 10px;
+}
