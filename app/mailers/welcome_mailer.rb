@@ -1,4 +1,4 @@
-class InviteMailer < ActionMailer::Base
+class WelcomeMailer < ActionMailer::Base
   default from: "from@example.com"
 
   # Subject can be set in your I18n file at config/locales/en.yml
@@ -6,10 +6,10 @@ class InviteMailer < ActionMailer::Base
   #
   #   en.invite_mailer.sent.subject
   #
-  def sent(invite)
+  def sent(user)
 
-    @invite = invite
+    @user = user
 
-    mail(to: @invite.email, subject: "「こそだてひろば」にあそびに来てね！")
+    mail(to: @user.email, subject: "「こそだてひろば」へようこそ！")
   end
 end

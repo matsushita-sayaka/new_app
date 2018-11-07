@@ -29,7 +29,6 @@ ActiveRecord::Schema.define(version: 20181104215311) do
     t.text     "message"
   end
 
-
   create_table "ingredients", force: true do |t|
     t.integer  "user_id"
     t.integer  "check_box"
