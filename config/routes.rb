@@ -22,7 +22,7 @@ MyApp::Application.routes.draw do
   resources :surveys, only: [:create]
   resources :comments, only: [:create, :destroy]
   resources :likes, only: [:create, :destroy]
-  resources :friends, only: [:create, :destroy, :update]
+  resources :friends, only: [:create, :destroy]
   
   
   root 'static_pages#home'

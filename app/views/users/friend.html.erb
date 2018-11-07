@@ -5,7 +5,7 @@
   
   <%= form_for @friend do |f| %>
     <%= f.hidden_field :user_id_rq, :value => @user.id %>
-    <%= f.hidden_field :status, :value => "wait" %>
+    <%= f.hidden_field :user_id, :value => current_user.id %>
     <div class="row">
       <div class="col-md-8 col-md-offset-2">
         <%= render 'shared/error_messages', object: f.object %>

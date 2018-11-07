@@ -4,5 +4,5 @@ class Friend < ActiveRecord::Base
     
     validates :user_id, presence: true
     validates :user_id_rq, presence: true
-     validates :status, presence: true
+     
 end

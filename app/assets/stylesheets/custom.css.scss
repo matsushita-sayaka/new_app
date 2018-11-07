@@ -11,6 +11,10 @@
   border-left: $weight solid $color;
 }
 
+img {
+    object-fit: contain;
+}
+
 .clear {
   clear: both;
 }

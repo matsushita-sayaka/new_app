@@ -3,10 +3,10 @@
 <div class="container">
     <div class="row">
         <div class="col-sm-12 user-message">
-        <p><%= @user.message %></p>
+            <p><%= @user.message %></p>
         </div>
-        </div>
-        <div class="row">
+    </div>
+    <div class="row">
         <div class="col-sm-4 text-center">
             <% if @user.image? %>
                 <%= image_tag @user.image.thumb.url, class: 'show-user-face-img' %>
@@ -16,76 +16,115 @@
             <%= @user.name %></br>
             <% if current_user == @user %>
                 <%= link_to "編集", edit_user_registration_path %>
+            <% elsif current_user.friends.find_by('user_id = ? and user_id_rq = ?', @user.id, current_user.id).present? %>
+                <p>友達です</p>
             <% else %>
                 <%= link_to "Friendリクエストを送る", friend_user_path %>
             <% end %>
         </div>
-        <div class="col-sm-8">
-            <% @user ||= current_user %>
+        <div class="col-sm-8 friends-box">
+            <% if current_user == @user %>
+                <% if @friends.present? %>
+                    <p><%= link_to "■ Frinds", friends_list_user_path(@user) %> <span class="count"><%= @friends.count %></span></p>
+                    <% @accepts = @friends.take(5) %>
+                    <ul>
+                        <%= render partial: 'users/friend', collection: @accepts %>
+                    </ul>
+                <% end %>
+                <% if @receive_friends.present? %>
+                    <p><%= link_to "■ Friendリクエストが届きました！", friends_list_user_path(@user) %> <span class="count"><%= @receive_friends.count %></span></p>
+                    <% @receive = @receive_friends.take(5) %>
+                    <ul>
+                        <%= render partial: 'users/show_receive', collection: @receive %>
+                    </ul>
+                <% end %>
+                <% if @request_friends.present? %>
+                    <p><%= link_to "■ Friendリクエストを届けました！", friends_list_user_path(@user) %> <span class="count"><%= @request_friends.count %></span></p>
+                    <% @request = @request_friends.take(5) %>
+                    <ul>
+                        <%= render partial: 'users/request_friend', collection: @request %>
+                    </ul>
+                <% end %>
+                <p><a href ="mailto:""">■ 友達を招待する</a></p>
+            <% end %>
             
-             <% if @accepts.any? %>
-             <%= link_to "frinds list", friends_list_user_path(@user) %> <%= @accepts.count %>
-             <% @accepts.each do |accept| %>
-             <p><%= accept.user_id %></p>
-             <% end %>
-             <% end %>
-             
-             
-             
-             <% if @waits.any? %>
-             <p>友達リクエストが届きました！</p>
-             <% @waits.each do |wait| %>
-             <%= wait.user_id %>
-             <% end %>
-             <% end %>
-             
-             <% if @keeps.any? %>
-             <p>友達リクエストを届けました！</p>
-             <% @keeps.each do |keep| %>
-             <%= keep.user_id_rq %>
-             <% end %>
-             <% end %>
-             </br>
-            <%= link_to "Member list", users_path %>
-            <%= link_to "友達を招待する", new_invite_path %>
         </div>
     </div>
     <div class="row">
         <section class="py-5">
-        <div class="container">
           <ul class="nav nav-pills nav-fill">
-            <li class="nav-item"><a href="#posts" class="nav-link active" data-toggle="tab">投稿　<%= @user.posts.count %></a></li>
-            <li class="nav-item"><a href="#likes" class="nav-link" data-toggle="tab">お気に入り　<%= @user.likes.count %></a></li>
-            <li class="nav-item"><a href="#comments" class="nav-link" data-toggle="tab">コメント　<%= @user.comments.count %></a></li>
+            <li class="nav-item"><a href="#posts" class="nav-link active" data-toggle="tab">投稿　<span class="count"><%= @user.posts.count %></span></a></li>
+            <li class="nav-item"><a href="#likes" class="nav-link" data-toggle="tab">お気に入り　<span class="count"><%= @user.likes.count %></span></a></li>
+            <li class="nav-item"><a href="#comments" class="nav-link" data-toggle="tab">コメント　<span class="count"><%= @user.comments.count %></span></a></li>
+            <li class="nav-item"><a href="#ingredients" class="nav-link" data-toggle="tab">買い物リスト</a></li>
           </ul>
           <div class="tab-content">
             <div id="posts" class="tab-pane active">
                 <% if @user.posts.any? %>
                     <ul class="post-index">
-                    <%= render partial: 'posts/post', collection: @posts %>
+                        <%= render partial: 'posts/post', collection: @posts %>
                     </ul>
-                <% end %>
                 <%= will_paginate @posts, renderer: BootstrapPagination::Rails %>
+                <% end %>
             </div>
             <div id="likes" class="tab-pane">
-             <% @likes.each do |like| %>
-             <%= like.post_id %>
-             <% end %>
+                <% if @user.likes.any? %>
+                    <ul class="post-index">
+                        <% @likes.each do |like| %>
+                            <% post = Post.find_by(id: like.post_id) %>
+                            <li>
+                                <%= image_tag 'post/like.png', class: 'show-like-img' %>
+                                <%= link_to post.title, post_path(post)  %>
+                                <%= post.main_content %>
+                            </li>
+                        <% end %>
+                    </ul>
+                <% end %>
+                <%= will_paginate @likes, renderer: BootstrapPagination::Rails %>
             </div>
             <div id="comments" class="tab-pane">
                 <% if @user.comments.any? %>
-                  <% @comments.each do |comment| %>
-                  <%= comment.post_id %>
-                  <% end %>
-                      <ul class="post-index">
-                      
-                      </ul>
-                 
+                    <ul class="post-index">
+                        <% @comments.each do |comment| %>
+                            <% post = Post.find_by(id: comment.post_id) %>
+                            <li>
+                                <%= image_tag 'post/comment.png', class: 'show-like-img' %>
+                                <%= link_to post.title, post_path(post)  %>
+                                <%= post.main_content %>
+                                <p class="text-right"><%= comment.content %></p>
+                            </li>
+                        <% end %>
+                    </ul>
+                <% end %>
+                <%= will_paginate @comments, renderer: BootstrapPagination::Rails %>
+            </div>
+            <div id="ingredients" class="tab-pane">
+                <% if @user.ingredients.any? %>
+                <p>■ ■ ■ つくおきレシピ ① ■ ■ ■ </p>
+                    <ul class="post-index">
+                        
+                        <% @ingredients.each do |ingredient| %>
+                        <% recipe = Recipe.find(ingredient.recipe_id) %>
+                    <li>
+                        <% if ingredient.check_box == 1 %>
+                        <span><%= recipe.ingredient %></span>　
+                        <% if recipe.amount.present? %><%= recipe.amount %><% end %>　
+                        <% if recipe.prepare.present? %><%= image_tag 'shared-menu/star.png', class: 'star-img' %><%= recipe.prepare %></span><% end %>
+                        <% if recipe.breakdown.present? %><%= recipe.breakdown %></span><% end %>
+                        <% else %>
+                        <input type="checkbox" style="width:20px">
+                        <span class="ingredient-left"><%= recipe.ingredient %></span>　
+                        <% if recipe.amount.present? %><%= recipe.amount %><% end %>　
+                        <% if recipe.prepare.present? %><span class="ingredient-right"><%= image_tag 'shared-menu/star.png', class: 'star-img' %><%= recipe.prepare %></span><% end %>
+                        <% if recipe.breakdown.present? %><span class="ingredient-center"><%= recipe.breakdown %></span><% end %>
+                        <% end %>
+                    </li>
+                        <% end %>
+                    </ul>
+                     <%= link_to "delete", ingredient_path, method: :delete, data: { confirm: "You sure?" }, class: "btn btn-lg submit" %>
                 <% end %>
             </div>
           </div>
-        </div>
       </section>
     </div>
 </div>
-            

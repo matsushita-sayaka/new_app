@@ -8,22 +8,23 @@
             <span class="ingredient-right"><%= image_tag 'shared-menu/star.png', class: 'star-img' %>下準備内容</span>
             <span class="ingredient-center">(分量の内訳)</span>
         </p>
-        <%= form_for @ingredient do |f| %>
-            <%= f.submit "☆たりないものリスト☆", class: "btn btn-lg recipe-submit" %><span>  今ある食材をチェックしてボタンをクリックしてね!</span></br>
+        <%= form_tag ingredients_path do |f| %>
+              <%= submit_tag "☆たりないものリスト☆", class: "btn btn-lg recipe-submit" %><span>今ある食材をチェックしてボタンをクリックしてね!</span></br>
             ※細切りは薄切りにした食材を3mm〜5mmほどの細さ、千切りは食材を幅1〜2mmに細く切ることです。
             <ul class="recipe-details">
                 <% @recipes.each do |recipe| %>
-                <li>
-                    <%= f.check_box :check_box %>
-                    <%= recipe.id %>
-                    <%= f.hidden_field :recipe_id, :value => recipe.id %>
-                    <span class="ingredient-left"><%= recipe.ingredient %></span>　
-                    <% if recipe.amount.present? %><%= recipe.amount %><% end %>　
-                    <% if recipe.prepare.present? %><span class="ingredient-right"><%= image_tag 'shared-menu/star.png', class: 'star-img' %><%= recipe.prepare %></span><% end %>
-                    <% if recipe.breakdown.present? %><span class="ingredient-center"><%= recipe.breakdown %></span><% end %>
-                </li>
+                    <li>
+                        <%= hidden_field_tag 'ingredient[][recipe_id]', recipe.id %>
+                        <%= check_box_tag 'ingredient[][check_box]'  %>
+                        
+                        <span class="ingredient-left"><%= recipe.ingredient %></span>　
+                        <% if recipe.amount.present? %><%= recipe.amount %><% end %>　
+                        <% if recipe.prepare.present? %><span class="ingredient-right"><%= image_tag 'shared-menu/star.png', class: 'star-img' %><%= recipe.prepare %></span><% end %>
+                        <% if recipe.breakdown.present? %><span class="ingredient-center"><%= recipe.breakdown %></span><% end %>
+                    </li>
                 <% end %>
             </ul>
+            
         <% end %>
         <div class="to-recipe text-center">
             </br>

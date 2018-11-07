@@ -1,32 +1,45 @@
 <% provide(:title, 'friends_list') %>
 <%= image_tag 'user/user-line.png', class: 'user-line-img' %>
 <div class="container">
-<p class="title">Friends List</p>
-
-<ul class="users">
-        <% if @accepts.any? %>
-             <% @accepts.each do |accept| %>
-             <%= accept.user_id %>
-             <% end %>
-             <% end %>
-             
-             
-             <% if @waits.any? %>
-             <p>友達リクエストが届きました！</p>
-             <% @waits.each do |wait| %>
-             <%= wait.user_id %>
-                 <%= form_for @friend do |f| %>
-                    <%= f.hidden_field :status, :value => "accept" %>
-                    <%= f.submit "友達になる！", class: "btn btn-lg submit" %>
-                <% end %>
-             <% end %>
-             <% end %>
-             <p>友達リクエストを届けました！</p>
-             <% if @keeps.any? %>
-             <% @keeps.each do |keep| %>
-             <%= keep.user_id_rq %>
-             <% end %>
-             <% end %>
-    </ul>
-  </div>  
+    <p class="title">Friends List</p>
+    <div class="row friends-list">
+    <% if @friends.any? %>
+        <P>■ Frinds <span class="count"><%= @friends.count %></span></P>
+        <div class="col-sm-2">
+            <%= image_tag 'user/friend.png', class: 'status-img' %>
+        </div>
+        <div class="col-sm-10">
+            <ul>
+                <%= render partial: 'users/friend', collection: @friends %>
+            </ul>
+        </div>
+    <% end %>
+    </div>
+    <div class="row friends-list list-center">
+        <% if @receive_friends.present? %>
+            <p>■ リクエストが届きました　<span class="count"><%= @receive_friends.count %></span></p>
+            <div class="col-sm-2">
+                <%= image_tag 'user/receive.png', class: 'receive-status-img' %>
+            </div>
+            <div class="col-sm-10">
+                <ul>
+                    <%= render partial: 'users/receive_friend', collection: @receive_friends %>
+                </ul>
+            </div>
+        <% end %>
+    </div>
+    <div class="row friends-list">
+        <% if @request_friends.any? %>
+            <p>■ リクエストを届けました！　<span class="count"><%= @request_friends.count %></span></p>
+            <div class="col-sm-2">
+                <%= image_tag 'user/request.png', class: 'request-status-img' %>
+            </div>
+            <div class="col-sm-10">
+                <ul>
+                    <%= render partial: 'users/request_friend', collection: @request_friends %>
+                </ul>
+            </div>
+        <% end %>
+    </div>
+</div>  
   

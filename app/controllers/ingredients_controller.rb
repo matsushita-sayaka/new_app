@@ -10,21 +10,21 @@ class IngredientsController < ApplicationController
   end
   
   def create
-    @ingredient = current_user.ingredients.new(ingredient_params)
-    if @ingredient.save
-      redirect_to ingredients_path
-    else
-      render ingredients_path
+    params[:ingredient].each do |ingredient|
+      logger.debug("--------------------- 友達　#{ingredient}")
+      current_user.ingredients.create!(recipe_id: ingredient[:recipe_id], check_box: ingredient[:check_box])
     end
-    
+    redirect_to user_path(current_user)
   end
-  
+ 
   def destroy
+    current_user.ingredients.where(recipe_id: 1..64).destroy_all
+    redirect_to :back
   end
   
   private
   
   def ingredient_params
-    params.require(:ingredient).permit(:user_id, :check_box, :recipe_id)
+    params.require(:ingredient).permit(:user_id, check_box:[], recipe_id:[] )
   end
 end
