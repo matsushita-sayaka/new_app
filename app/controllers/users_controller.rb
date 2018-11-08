@@ -54,7 +54,7 @@ class UsersController < ApplicationController
   
   def friends_list
     @friend = current_user.friends_of_user.new
-    @friends = []
+   @friends = []
     @request_friends = []
     @receive_friends = []
     @friend_status = ""

@@ -17,7 +17,7 @@
             <% if current_user == @user %>
                 <%= link_to "編集", edit_user_registration_path %>
             <% elsif current_user.accept?(@user) %>
-                <p>友達</p>
+                <p>☆ 友達 ☆</p>
             <% elsif current_user.friend_request?(@user) %>
                 <p>友達リクエスト中！</p>
             <% elsif current_user.wait?(@user) %>
@@ -50,6 +50,9 @@
                     </ul>
                 <% end %>
                 <p><a href ="mailto:""">■ 友達を招待する</a></p>
+                <% else %>
+                <%= text_area %>
+            
             <% end %>
             
         </div>
