@@ -21,6 +21,7 @@ $font-title: 'Wawati SC', 'Bradly Hand';
       font-size: .9em;
     }
 }
+
 .cook-main:hover {
       animation-name: shake;
       animation-duration: .7s;
@@ -32,6 +33,7 @@ $font-title: 'Wawati SC', 'Bradly Hand';
       50% { transform: rotate(-8deg) translate(-1px, 0); }
       100% { transform: rotate(8deg) translate(1px, 0); }
     }
+    
 .cook-main {
     margin: 20px 0;
     .kitchenware-img {

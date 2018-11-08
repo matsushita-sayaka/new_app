@@ -9,35 +9,30 @@ $font-title: 'Wawati SC', 'Bradly Hand';
   border-radius: 3em .7em 2em .7em/.7em 2em .7em 3em;
 }
 
-
-.fixed-post, .fixed-myPage, .fixed-logout, .fixed-menu, .fixed_details {
-    position: fixed;
-    right: 0px;
-    margin: 0;
-    z-index: 100;
-    @include fram(1px, #ccc);
-    font-family: $font-title;
-}
-
-.fixed-post {
-    top : 500px;
-}
-
-.fixed-myPage {
-    top : 560px;
-}
-
-.fixed-logout {
-    top : 680px;
-} 
-
-
-.fixed-menu {
-    top : 620px;
-}
-
-.fixed_details {
-    top : 380px;
+.home-menu {
+   .fixed-post, .fixed-myPage, .fixed-logout, .fixed-menu, .fixed_details {
+        position: fixed;
+        right: 0px;
+        margin: 0;
+        z-index: 100;
+        @include fram(1px, #ccc);
+        font-family: $font-title;
+    }
+    .fixed-post {
+        top : 500px;
+    }
+    .fixed-myPage {
+        top : 560px;
+    }
+    .fixed-logout {
+        top : 680px;
+    } 
+    .fixed-menu {
+        top : 620px;
+    }
+    .fixed_details {
+        top : 380px;
+    }
 }
 
 .header-img {
@@ -143,4 +138,208 @@ $font-title: 'Wawati SC', 'Bradly Hand';
     .more-info {
         background: #efefef;
     }
+}
+
+.shared-photo-img {
+    width: 100%;
+    background: #efefef;
+}
+
+// home-modal
+
+.close-img {
+    width: 25px;
+}
+
+.modal-img {
+    width: 20%;
+    float: right;
+}
+
+/*
+Pure CSS home-modal box
+Author: Jorge Chavez
+Github: http://github.com/jorgechavz
+*/
+
+.home-modal-wrap > h3,p {
+  font-size: 18px;
+}
+
+.about-img {
+  float: right;
+  width: 30%;
+  margin: 0 auto;
+}
+
+.home-modal .checkbox{
+  display: none;
+}
+
+/* Gray background */
+.home-modal .home-modal-overlay{
+  transition: all 0.3s ease;
+  width: 50%;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: -100;
+  transform: scale(1);
+  display: none;
+  background-image: url("/modal-back.png");
+  opacity: 0.1;
+}
+
+/* Box */
+.home-modal .home-modal-wrap{
+  background-color: #fff;
+  opacity: 0.9;
+  box-shadow: 3px 3px 3px rgba(0,0,0,0.2);
+  padding: 40px 50px;
+  width: 100%;
+  margin: 20px auto;
+  align-self: flex-start;
+  border-radius: 2px;
+  transition: all 0.5s ease;
+}
+
+.home-modal .home-modal-wrap.small{
+  width: 30%;
+}
+
+.home-modal .home-modal-wrap.full{
+  width: 100%;
+  height: 100%;
+}
+
+.home-modal .home-modal-wrap.a-center {
+  align-self: center;
+}
+
+.home-modal .home-modal-wrap.from-left {
+  transform: translateX(-100%);
+}
+
+.home-modal .home-modal-wrap.from-right {
+  transform: translateX(100%);
+}
+
+.home-modal .home-modal-wrap.from-top {
+  transform: translateY(-100%);
+}
+
+.home-modal .home-modal-wrap.from-bottom {
+  transform: translateY(100%);
+}
+
+/* Close button */
+.home-modal .home-modal-overlay .close{
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  font-size: 40px;
+  width: 30px;
+  height: 30px;
+  color: #282c34;
+}
+
+.home-modal .home-modal-overlay .close:hover{
+  cursor: pointer;
+  color: #4b5361;
+}
+
+.home-modal .o-close {
+   width: 100%;
+   height: 100%;
+   position: fixed;
+   left: 0;
+   top: 0;
+   z-index: -100;
+ }
+
+.home-modal input:checked ~ .o-close {
+  z-index: 9998;
+}
+
+.home-modal input:checked ~ .home-modal-overlay{
+  transform: scale(1);
+  opacity:1;
+  z-index: 9997;
+  overflow: auto;
+  display: flex;
+  animation-duration: 0.5s;
+  animation-name: fade-in;
+  -moz-animation-duration: 0.5s;
+  -moz-animation-name: fade-in;
+  -webkit-animation-duration: 0.5s;
+  -webkit-animation-name: fade-in;
+}
+.home-modal input:checked ~ .home-modal-overlay .home-modal-wrap {
+  transform: translateY(0);
+  z-index: 9999;
+}
+
+/* Responsive Design */
+/* Tablet size */
+@media (max-width: 800px){
+  .home-modal .home-modal-wrap {
+    width: 80%;
+    padding: 20px;
+  }
+}
+
+/* Phone size */
+@media (max-width: 500px){
+  .home-modal .home-modal-wrap {
+    width: 90%;
+  }
+}
+
+/* Fadein from display:none */
+@keyframes fade-in {
+  0% {
+    display: none;
+    opacity: 0;
+  }
+  1% {
+    display: flex;
+    opacity: 0;
+  }
+  100% {
+    display: flex;
+    opacity: 1;
+  }
+}
+
+@-moz-keyframes fade-in {
+  0% {
+    display: none;
+    opacity: 0;
+  }
+  1% {
+    display: flex;
+    opacity: 0;
+  }
+  100% {
+    display: flex;
+    opacity: 1;
+  }
+}
+
+@-webkit-keyframes fade-in {
+  0% {
+    display: none;
+    opacity: 0;
+  }
+  1% {
+    display: flex;
+    opacity: 0;
+  }
+  100% {
+    display: flex;
+    opacity: 1;
+  }
 }

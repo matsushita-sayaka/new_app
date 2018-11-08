@@ -13,12 +13,16 @@
             <% else %>
                 <%= image_tag 'user/user-face.png', class: 'show-user-face-img' %>
             <% end %>
-            <%= @user.name %></br>
+            <p><%= @user.name %> さん</p>
             <% if current_user == @user %>
                 <%= link_to "編集", edit_user_registration_path %>
-            <% elsif current_user.friends.find_by('user_id = ? and user_id_rq = ?', @user.id, current_user.id).present? %>
-                <p>友達です</p>
-            <% else %>
+            <% elsif current_user.accept?(@user) %>
+                <p>友達</p>
+            <% elsif current_user.friend_request?(@user) %>
+                <p>友達リクエスト中！</p>
+            <% elsif current_user.wait?(@user) %>
+                <p>友達リクエストが届いてるよ！</p>
+            <%else %>
                 <%= link_to "Friendリクエストを送る", friend_user_path %>
             <% end %>
         </div>
@@ -35,11 +39,11 @@
                     <p><%= link_to "■ Friendリクエストが届きました！", friends_list_user_path(@user) %> <span class="count"><%= @receive_friends.count %></span></p>
                     <% @receive = @receive_friends.take(5) %>
                     <ul>
-                        <%= render partial: 'users/show_receive', collection: @receive %>
+                        <%= render partial: 'users/receive_friend', collection: @receive %>
                     </ul>
                 <% end %>
                 <% if @request_friends.present? %>
-                    <p><%= link_to "■ Friendリクエストを届けました！", friends_list_user_path(@user) %> <span class="count"><%= @request_friends.count %></span></p>
+                    <p><%= link_to "■ Friendリクエスト中！", friends_list_user_path(@user) %> <span class="count"><%= @request_friends.count %></span></p>
                     <% @request = @request_friends.take(5) %>
                     <ul>
                         <%= render partial: 'users/request_friend', collection: @request %>

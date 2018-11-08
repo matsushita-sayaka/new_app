@@ -1,9 +1,0 @@
-<li class="request_friend">
-    <% user = User.find_by(id: show_receive) %>
-        <% if user.image? %>
-            <%= image_tag user.image.thumb.url %>
-        <% else %>
-            <%= image_tag 'user/user-face.png', class: 'index-user-face-img' %>
-        <% end %>
-    <%= link_to user.name, user_path(user) %>
-</li>

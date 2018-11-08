@@ -7,12 +7,12 @@ class LikesController < ApplicationController
   end
   
   def destroy
-    @like = Like.find_by(user_id: current_user.id, post_id: params[:id])
+    @like = current_user.likes.find_by(post_id: params[:id])
     @like.destroy
     redirect_to :back
   end
   
-   private
+  private
   
   def like_params
     params.require(:like).permit(:post_id, :user_id)

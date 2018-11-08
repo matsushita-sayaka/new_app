@@ -4,24 +4,21 @@
     <div class="row">
         <div class="col-sm-3  post-show-top">
             <% if @post.user.image? %>
-                <%= image_tag user.image.thumb.url %>
+                <%= image_tag @post.user.image.thumb.url %>
             <% else %>
                 <%= image_tag 'user/user-face.png', class: 'index-user-face-img' %>
             <% end %>
             <%= link_to @post.user.name, user_path(@post.user) %>
-            
             <p class="timestamp">Posted <%= time_ago_in_words(@post.created_at) %> ago</p>
         </div>
         <% if current_user == @post.user %>
-        <div class="col-sm-2 col-sm-offset-1 post-delete">
-            <%= link_to "delete",@post, method: :delete,
-                                    data: { confirm: "You sure?" },
-                                    title: @post.title %>
-        </div>
-        <div class="col-sm-2 post-edit">                        
-            <%= link_to "edit", edit_post_path %>
-        </div>
-         <% end %>
+            <div class="col-sm-2 post-edit">                        
+                <%= link_to "edit", edit_post_path %>
+            </div>
+            <div class="col-sm-2 col-sm-offset-1 post-delete">
+                <%= link_to "delete",@post, method: :delete, data: { confirm: "You sure?" }, title: @post.title %>
+            </div>
+        <% end %>
     </div>
     <div class="row">
         <div class="col-sm-10">

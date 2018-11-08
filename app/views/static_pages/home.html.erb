@@ -1,4 +1,5 @@
 <%= image_tag 'user/user-line.png', class: 'user-line-img' %>
+<%= render 'static_pages/modal' %>
 <div class="container">
     
     <div id="top-img">
@@ -6,10 +7,10 @@
     </div>
     <div class="row proverb">
         <h3>■ 本日のこそだての格言</h3>
-        <div class="col-sm-8 sentence">
+        <div class="sentence">
             <%= @sentence[0] %>
         </div>
-        <div class="col-sm-4 text-right sentence">
+        <div class="text-right sentence">
             <%= @sentence[1] %>          
         </div>
     </div>

@@ -1,0 +1,16 @@
+<li class="row request_friend">
+    <% user = User.find_by(id: request_friend) %>
+    <div class="col-sm-1">
+        <% if user.image.present? %>
+            <%= image_tag user.image.thumb.url %>
+        <% else %>
+            <%= image_tag 'user/user-face.png', class: 'index-user-face-img' %>
+        <% end %>
+    </div>
+    <div class="col-sm-4">
+        </br><%= link_to user.name, user_path(user) %>
+    </div>
+    <div class="col-sm-7">
+        </br><span><%= Friend.find_by('user_id_rq = ? and user_id = ?', user.id, current_user.id).message %></span>
+    </div>
+</li>

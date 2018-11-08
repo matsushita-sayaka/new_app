@@ -21,6 +21,9 @@
 .post-contents {
     .picture-content {
         background: #efefef;
+        .post-img {
+            width: 100%;
+        }
         .index-sample-img {
             width: 40%;
         }
@@ -35,13 +38,13 @@
     .photo-img {
         width: 100%;
     }
-    
 }
 
 .likes-content-comment {
     margin-top: 60px;
     padding: 0;
 }
+
 .likes-content {
     margin-top: 60px;
     padding: 0 10px;
@@ -98,6 +101,7 @@
     float: right;
     font-size: 15px;
 }
+
 // show
 .post-show-top {
     margin-bottom: 10px;
@@ -158,14 +162,13 @@
 .post-new input {
     width: 100%;
     border-radius: 5px;
-    
 }
 
 .to-add {
     padding: 5px 20px;
     background: #e29399;
     border-radius: 3px;
-    }
+}
     
 .to-remove {
     padding: 5px 20px;

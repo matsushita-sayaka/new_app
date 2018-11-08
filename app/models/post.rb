@@ -3,11 +3,11 @@ class Post < ActiveRecord::Base
     belongs_to :user
     has_many :post_details, dependent: :destroy
     
-    has_many :users, through: :likes, dependent: :destroy
-    has_many :likes
+    has_many :users, through: :likes
+    has_many :likes, dependent: :delete_all
     
-    has_many :users, through: :comments, dependent: :destroy
-    has_many :comments
+    has_many :users, through: :comments
+    has_many :comments, dependent: :delete_all
     
     accepts_nested_attributes_for :post_details, allow_destroy: true
     default_scope -> { order('created_at DESC') }

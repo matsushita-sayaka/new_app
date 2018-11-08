@@ -1,27 +1,31 @@
 <li>
-    <% if post.post_details.any? %>
-        <% detail = PostDetail.find_by(post_id: post.id) %>
-        <div class="col-md-4 text-center picture-content">
+    <div class="col-md-4 text-center picture-content">
+        <% if post.post_details.any? %>
+            <% detail = PostDetail.find_by(post_id: post.id) %>
             <% if detail.image.present? %>
                 <%= image_tag detail.image.post.url, class: 'post-img' %></br>
             <% else %>
                 <%= image_tag 'post/index-sample.png', class: 'index-sample-img' %></br>
             <% end %>
-            <p class="post-title"><%= post.title %></p>
-            <div class="info">
-                <%= image_tag 'home/more-info.png', class: 'more-info-img' %><span>+ more info</span>
-                <div class="more-info">
-                    <%= post.main_content %><br/>
+        <% else %>
+            <%= image_tag 'post/photo.png', class: "shared-photo-img" %>
+        <% end %>
+        <p class="post-title"><%= post.title %></p>
+        <div class="info">
+            <%= image_tag 'home/more-info.png', class: 'more-info-img' %><span>+ more info</span>
+            <div class="more-info">
+                <%= post.main_content %><br/>
+                <% if detail.present? %>
                     <%= detail.content %><br/>
-                    <% if signed_in? %>
-                        <%= link_to "続きを見る", post %>
-                    <% else %>
-                        続きはログインまたは新規登録お願いします<br/>
-                        <%= link_to("●新規登録●", new_user_registration_path) %><br/>
-                        <%= link_to("●ログイン●", new_user_session_path) %>
-                    <% end %>
-                </div>
+                <% end %>
+                <% if signed_in? %>
+                    <%= link_to "続きを見る", post %>
+                <% else %>
+                    続きはログインまたは新規登録お願いします<br/>
+                    <%= link_to("●新規登録●", new_user_registration_path) %><br/>
+                    <%= link_to("●ログイン●", new_user_session_path) %>
+                <% end %>
             </div>
         </div>
-    <% end %>
+    </div>
 </li>

@@ -1,0 +1,16 @@
+<li class="row friend">
+    <% user = User.find_by(id: friend) %>
+    <div class="col-sm-1">
+        <% if user.image? %>
+            <%= image_tag user.image.thumb.url %>
+        <% else %>
+            <%= image_tag 'user/user-face.png', class: 'index-user-face-img' %>
+        <% end %>
+    </div>
+    <div class="col-sm-4 text">
+        </br><%= link_to user.name, user_path(user) %>
+    </div>
+    <div class="col-sm-7">
+        </br><%= truncate(user.message, length:50) %>
+    </div>
+</li>

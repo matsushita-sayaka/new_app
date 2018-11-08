@@ -11,12 +11,12 @@ class UsersController < ApplicationController
     
   def show
     @user = User.find(params[:id])
-    @posts = current_user.posts.paginate(page: params[:page])
-    @comments = current_user.comments.paginate(page: params[:page])
-    @likes = current_user.likes.paginate(page: params[:page])
+    @posts = @user.posts.paginate(page: params[:page])
+    @comments = @user.comments.paginate(page: params[:page])
+    @likes = @user.likes.paginate(page: params[:page])
     @like = Like.new
-    @ingredients = current_user.ingredients.where(recipe_id: 1..64).order(:check_box)
-    @friend = current_user.friends.new
+    @ingredients = @user.ingredients.where(recipe_id: 1..64).order(:check_box)
+    @friend = current_user.friends_of_user.new
     @friends = []
     @request_friends = []
     @receive_friends = []
@@ -24,16 +24,11 @@ class UsersController < ApplicationController
     
     Friend.where(user_id: current_user.id).each do |f|
       if Friend.find_by('user_id = ? and user_id_rq = ?', f.user_id_rq, current_user.id) 
-      logger.debug("--------------------- 友達　f.user_id_rq = #{f.user_id_rq}")
         @friends.push(f.user_id_rq)
         @friend_status = "f"
-       logger.debug("--------------------- 友達　#{@friend_status}") 
       else
-      logger.debug("--------------------- 申請中f.user_id_rq = #{f.user_id_rq}")
-        
         @request_friends.push(f.user_id_rq)
         @friend_status = "r"
-logger.debug("--------------------- 申請中　#{@friend_status}") 
       end
     end
     
@@ -42,7 +37,6 @@ logger.debug("--------------------- 申請中　#{@friend_status}")
       logger.debug("--------------------- 承認待ち　f.user_id_rq = #{f.user_id}")
         	@receive_friends.push(f.user_id)
     	    @friend_status = "w"
-
       end
     end
   end
@@ -55,11 +49,11 @@ logger.debug("--------------------- 申請中　#{@friend_status}")
   
   def friend
     @user = User.find(params[:id])
-    @friend = current_user.friends.new
+    @friend = current_user.friends_of_user.new
   end 
   
   def friends_list
-    @friend = current_user.friends.new
+    @friend = current_user.friends_of_user.new
     @friends = []
     @request_friends = []
     @receive_friends = []
@@ -67,16 +61,11 @@ logger.debug("--------------------- 申請中　#{@friend_status}")
     
     Friend.where(user_id: current_user.id).each do |f|
       if Friend.find_by('user_id = ? and user_id_rq = ?', f.user_id_rq, current_user.id) 
-      logger.debug("--------------------- 友達　f.user_id_rq = #{f.user_id_rq}")
         @friends.push(f.user_id_rq)
         @friend_status = "f"
-        
       else
-      logger.debug("--------------------- 申請中f.user_id_rq = #{f.user_id_rq}")
-       
         @request_friends.push(f.user_id_rq)
         @friend_status = "r"
-
       end
     end
     
@@ -85,7 +74,6 @@ logger.debug("--------------------- 申請中　#{@friend_status}")
       logger.debug("--------------------- 承認待ち　f.user_id_rq = #{f.user_id}")
         	@receive_friends.push(f.user_id)
     	    @friend_status = "w"
-
       end
     end
   end

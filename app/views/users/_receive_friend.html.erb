@@ -1,22 +1,9 @@
-<li class="row receive_friend">
-    <div class="col-sm-4">
+<li class="request_friend">
     <% user = User.find_by(id: receive_friend) %>
-    <% if user.image? %>
-        <%= image_tag user.image.thumb.url %>
-    <% else %>
-        <%= image_tag 'user/user-face.png', class: 'index-user-face-img' %>
-    <% end %>
+        <% if user.image? %>
+            <%= image_tag user.image.thumb.url %>
+        <% else %>
+            <%= image_tag 'user/user-face.png', class: 'index-user-face-img' %>
+        <% end %>
     <%= link_to user.name, user_path(user) %>
-    </div>
-    <div class="col-sm-5 receive-message">
-    <span><%= Friend.find_by('user_id_rq = ? and user_id = ?', current_user.id, user.id).message %></span>
-    </div>
-    <div class="col-sm-3">
-    <%= form_for @friend do |f| %>
-        <%= f.hidden_field :user_id_rq, :value => receive_friend %>
-        <%= f.hidden_field :message, :value => "-" %>
-        <%= f.hidden_field :user_id, :value => current_user.id %>
-        <%= f.submit "友達になる", class: "btn btn-lg submit" %>
-    <% end %>
-    </div>
 </li>

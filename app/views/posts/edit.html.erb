@@ -21,8 +21,9 @@
       <p>●投稿詳細：</p>
       <%= f.fields_for :post_details do |m| %>
         <div class="field">
-          <%= f.label :image %><br />
+          <%= f.label :image, "画像" %><br />
           <%= m.file_field :image %>
+          <%= m.hidden_field :image_cache %>
         </div>
         <div class="field">
           <%= f.label :content %><br />

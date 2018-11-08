@@ -1,5 +1,6 @@
 class TravelsController < ApplicationController
   before_action :authenticate_user!
+  
   def index
     @survey = Survey.new
     @surveys = Survey.where(category: "travel")

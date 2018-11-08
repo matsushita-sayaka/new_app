@@ -8,13 +8,13 @@
             <% end %>
         </div>
         <div class="col-md-3 text">
-            <%= link_to user.name, user %>
+            </br><%= link_to user.name, user %>
             <% if current_user.admin? && !(current_user == user) %>
              | <%= link_to "delete", user, method: :delete, data: {confirm: "You sure?"} %> |
              <% end %>
         </div>
         <div class="col-md-8">
-             <%= user.message %>
+             </br><%= truncate(user.message, length:80) %>
         </div>
     </div>
 </li>

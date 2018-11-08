@@ -9,6 +9,7 @@ class PostsController < ApplicationController
 
   def edit
     @post = Post.find(params[:id])
+    # @post.post_details.image.cache! unless @post.post_details.image.blank?
   end
 
   def new

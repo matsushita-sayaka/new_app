@@ -9,7 +9,6 @@ MyApp::Application.routes.draw do
     end
   end
   resources :posts
-  resources :invites, only: [:new, :create]
   resources :recipes, only: [:index]
   resources :others, only: [:index]
   resources :travels, only: [:index]
@@ -18,7 +17,7 @@ MyApp::Application.routes.draw do
   resources :healths, only: [:index]
   resources :cooks, only: [:index]
   resources :goes, only: [:index]
-  resources :ingredients, only: [:index, :show, :create, :destroy]
+  resources :ingredients, only: [:index, :create, :destroy]
   resources :surveys, only: [:create]
   resources :comments, only: [:create, :destroy]
   resources :likes, only: [:create, :destroy]

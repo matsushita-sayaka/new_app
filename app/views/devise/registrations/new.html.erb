@@ -37,7 +37,9 @@
         
         <div class="field">
           <%= f.label :image, class: "control-label" %>
+          <%= image_tag @user.image.thumb.url if @user.image? %>
           <%= f.file_field :image, autocomplete: "off", class: "form-control" %>
+          <%= f.hidden_field :image_cache %>
         </div>
         
         <div class="field">
