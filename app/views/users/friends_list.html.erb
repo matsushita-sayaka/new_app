@@ -2,6 +2,12 @@
 <%= image_tag 'user/user-line.png', class: 'user-line-img' %>
 <div class="container">
     <p class="title">Friends List</p>
+    <% if @receive_friends.present? %>
+        <a href="#receive_friend" class="friends-tag">■ Friendリクエストが届きました！<%= @receive_friends.count %></a>
+    <% end %>
+    <% if @request_friends.any? %>
+        <a href="#request_friends" class="friends-tag">■ Friendリクエスト中！<%= @request_friends.count %></a>
+    <% end %>
     <% if @friends.any? %>
         <div class="row friends-list list-border">
             <P>■ Frinds <span class="count"><%= @friends.count %></span></P>
@@ -16,7 +22,7 @@
         </div>
     <% end %>
     <% if @receive_friends.present? %>
-        <div class="row friends-list list-border">
+        <div class="row friends-list list-border" id="receive_friend">
             <p>■ Friendリクエストが届きました！　<span class="count"><%= @receive_friends.count %></span></p>
             <div class="col-sm-2">
                 <%= image_tag 'user/receive.png', class: 'receive-status-img' %>
@@ -29,7 +35,7 @@
         </div>
     <% end %>
     <% if @request_friends.any? %>
-        <div class="row friends-list">
+        <div class="row friends-list" id="request_friends">
             <p>■ Friendリクエスト中！　<span class="count"><%= @request_friends.count %></span></p>
             <div class="col-sm-2">
                 <%= image_tag 'user/request.png', class: 'request-status-img' %>

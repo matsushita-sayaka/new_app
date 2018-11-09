@@ -50,8 +50,30 @@
                     </ul>
                 <% end %>
                 <p><a href ="mailto:""">■ 友達を招待する</a></p>
+            <% elsif current_user.accept?(@user) %>
+            <p>☆<%= @user.name%>さんとお話をしよう！聞きたいことなどあればメッセージを書いて送ってね<p>
+                <%= form_for @talk do |f| %>
+                    <%= f.hidden_field :receiver_user_id, :value => @user.id %>
+                    <%= f.hidden_field :written_user_id, :value => current_user.id %>
+                    <%= render 'shared/error_messages', object: f.object %>
+                    <div class="field">
+                        <%= f.text_area :message, autofocus: true, placeholder: "message....", class: "form-control" %>
+                    </div>
+                    <div class="row">
+                        <div class="talk col-sm-5">
+                            <%= f.submit "メッセージを送る", class: "btn btn-lg submit" %>
+                        </div>
+                    </div>
+                          
+                <% end %>
+                <p>☆Talk Roomで今までの会話が見れるよ</p>
+                <div class="row">
+                        <div class="col-sm-5">
+                           <%= link_to 'Talk Room', talk_user_path, class: "btn btn-lg talk-btn" %>
+                        </div>
+                    </div>
+                    
                 
-            
             <% end %>
             
         </div>
@@ -105,30 +127,7 @@
                 <%= will_paginate @comments, renderer: BootstrapPagination::Rails %>
             </div>
             <div id="ingredients" class="tab-pane">
-                <% if @user.ingredients.any? %>
-                <p>■ ■ ■ つくおきレシピ ① ■ ■ ■ </p>
-                    <ul class="post-index">
-                        
-                        <% @ingredients.each do |ingredient| %>
-                        <% recipe = Recipe.find(ingredient.recipe_id) %>
-                    <li>
-                        <% if ingredient.check_box == 1 %>
-                        <span><%= recipe.ingredient %></span>　
-                        <% if recipe.amount.present? %><%= recipe.amount %><% end %>　
-                        <% if recipe.prepare.present? %><%= image_tag 'shared-menu/star.png', class: 'star-img' %><%= recipe.prepare %></span><% end %>
-                        <% if recipe.breakdown.present? %><%= recipe.breakdown %></span><% end %>
-                        <% else %>
-                        <input type="checkbox" style="width:20px">
-                        <span class="ingredient-left"><%= recipe.ingredient %></span>　
-                        <% if recipe.amount.present? %><%= recipe.amount %><% end %>　
-                        <% if recipe.prepare.present? %><span class="ingredient-right"><%= image_tag 'shared-menu/star.png', class: 'star-img' %><%= recipe.prepare %></span><% end %>
-                        <% if recipe.breakdown.present? %><span class="ingredient-center"><%= recipe.breakdown %></span><% end %>
-                        <% end %>
-                    </li>
-                        <% end %>
-                    </ul>
-                     <%= link_to "delete", ingredient_path, method: :delete, data: { confirm: "You sure?" }, class: "btn btn-lg submit" %>
-                <% end %>
+                <%= render 'users/shopping' %>
             </div>
           </div>
       </section>

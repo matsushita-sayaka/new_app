@@ -1,0 +1,23 @@
+<% if @user.ingredients.any? %>
+    <p>■ ■ ■ つくおきレシピ ① ■ ■ ■ </p>
+    <ul class="post-index">
+        <% @ingredients.each do |ingredient| %>
+            <% recipe = Recipe.find(ingredient.recipe_id) %>
+            <li>
+                <% if ingredient.check_box == 1 %>
+                <span><%= recipe.ingredient %></span>　
+                <% if recipe.amount.present? %><%= recipe.amount %><% end %>　
+                <% if recipe.prepare.present? %><%= image_tag 'shared-menu/star.png', class: 'star-img' %><%= recipe.prepare %></span><% end %>
+                <% if recipe.breakdown.present? %><%= recipe.breakdown %></span><% end %>
+                <% else %>
+                <input type="checkbox" style="width:20px">
+                <span class="ingredient-left"><%= recipe.ingredient %></span>　
+                <% if recipe.amount.present? %><%= recipe.amount %><% end %>　
+                <% if recipe.prepare.present? %><span class="ingredient-right"><%= image_tag 'shared-menu/star.png', class: 'star-img' %><%= recipe.prepare %></span><% end %>
+                <% if recipe.breakdown.present? %><span class="ingredient-center"><%= recipe.breakdown %></span><% end %>
+                <% end %>
+            </li>
+        <% end %>
+    </ul>
+     <%= link_to "delete", ingredient_path, method: :delete, data: { confirm: "You sure?" }, class: "btn btn-lg submit" %>
+<% end %>

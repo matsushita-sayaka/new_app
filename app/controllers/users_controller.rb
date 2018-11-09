@@ -15,6 +15,7 @@ class UsersController < ApplicationController
     @comments = @user.comments.paginate(page: params[:page])
     @likes = @user.likes.paginate(page: params[:page])
     @like = Like.new
+    @talk = Talk.new
     @ingredients = @user.ingredients.where(recipe_id: 1..64).order(:check_box)
     @friend = current_user.friends_of_user.new
     @friends = []
@@ -54,7 +55,7 @@ class UsersController < ApplicationController
   
   def friends_list
     @friend = current_user.friends_of_user.new
-   @friends = []
+    @friends = []
     @request_friends = []
     @receive_friends = []
     @friend_status = ""
@@ -76,6 +77,14 @@ class UsersController < ApplicationController
     	    @friend_status = "w"
       end
     end
+  end
+  
+  def talk
+    @user = User.find(params[:id])
+    @talk = Talk.new
+    @all = Talk.where("(written_user_id = ?) OR (written_user_id = ?)",current_user.id, @user.id)
+    @talks = @all.where("(receiver_user_id = ?) OR (receiver_user_id = ?)",current_user.id, @user.id)
+    
   end
   
   private

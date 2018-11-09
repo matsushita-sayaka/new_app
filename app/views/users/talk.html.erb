@@ -1,0 +1,23 @@
+<% provide(:title, 'talk room') %>
+<%= image_tag 'user/user-line.png', class: 'user-line-img' %>
+<div class="container">
+    <div class="row talk">
+        <p class="title">Talk Room</p>
+        <ul>
+            <%= render partial: 'users/talk', collection: @talks %>
+        </ul>
+            
+        
+        <%= form_for @talk do |f| %>
+            <%= f.hidden_field :receiver_user_id, :value => @user.id %>
+            <%= f.hidden_field :written_user_id, :value => current_user.id %>
+            <%= render 'shared/error_messages', object: f.object %>
+            <div class="field">
+                <%= f.label :message, class: "control-label" %>
+                <%= f.text_area :message, autofocus: true, class: "form-control" %>
+            </div>
+            <div class="col-md-3 col-md-offset-9">
+            <%= f.submit "メッセージを送る", class: "btn talk-submit" %>
+        <% end %>
+    </div>
+</div>

@@ -1,6 +1,11 @@
 // Place all the styles related to the Users controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+@mixin fram($weight, $color) {
+  padding: 1em;
+  border: $weight solid $color;
+  border-radius: 3em .7em 2em .7em/.7em 2em .7em 3em;
+}
 
 .user-line-img {
     width: 100%;
@@ -87,6 +92,11 @@
     font-size: 18px;
 }
 
+.talk-btn {
+    width: 100%;
+    background: #e6c0c0;
+}
+
 /* microposts */
 
 .posts {
@@ -145,7 +155,12 @@
     width: 80%;
 }
 
-
+.friends-tag {
+    background: #ccc;
+    border-radius: 5%;
+    padding: 8px;
+    margin-right: 10px;
+}
 // index
 .index-user-face-img {
     width: 50px;
@@ -175,3 +190,32 @@
         margin: 0 5px;
     }
 }
+
+// talk
+.talk-box {
+    margin: 10px 15px;
+    .talk-user-face-img {
+        width: 50px;
+        height: 50px;
+    }
+    .talk-fram {
+        @include fram(2px, #ccc);
+        background: #ccc;
+    }
+    .talk-fram-user {
+        @include fram(2px, #ccc);
+    }
+}
+
+.talk input {
+    width: 100%;
+    background: #ccc;
+}
+
+
+
+
+
+
+
+

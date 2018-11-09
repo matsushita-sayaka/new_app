@@ -22,6 +22,12 @@ class User < ActiveRecord::Base
     has_many :user_id, through: :friends_of_user
     has_many :user_id_rq, through: :friends_of_user_id_rq
     
+    has_many :talks_of_written_user, class_name: 'Talk', foreign_key: 'written_user_id',dependent: :destroy
+    has_many :talks_of_receiver_user, class_name: 'Talk', foreign_key: 'receiver_user_id',dependent: :destroy
+    has_many :written_user_id, through: :talks_of_written_user
+    has_many :receiver_user_id, through: :talks_of_receiver_user
+    
+    
     has_many :surveys, dependent: :destroy
     
     has_many :posts, dependent: :destroy

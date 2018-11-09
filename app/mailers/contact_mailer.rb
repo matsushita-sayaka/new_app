@@ -1,4 +1,4 @@
-class WelcomeMailer < ActionMailer::Base
+class ContactMailer < ActionMailer::Base
   default from: "from@example.com"
 
   # Subject can be set in your I18n file at config/locales/en.yml
@@ -8,8 +8,8 @@ class WelcomeMailer < ActionMailer::Base
   #
   def sent(user)
 
-    @user = user
+    @user= user
 
-    mail(to: @user.email, subject: "「こそだてひろば」へようこそ！")
+    mail(to: @user.email, subject: "メッセージが届きました")
   end
 end

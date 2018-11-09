@@ -5,7 +5,7 @@ MyApp::Application.routes.draw do
   }
   resources :users, only: [:show, :index, :destroy] do
     member do
-      get :friend, :friends_list
+      get :friend, :friends_list, :talk
     end
   end
   resources :posts
@@ -22,6 +22,7 @@ MyApp::Application.routes.draw do
   resources :comments, only: [:create, :destroy]
   resources :likes, only: [:create, :destroy]
   resources :friends, only: [:create, :destroy]
+  resources :talks, only: [:create, :destroy]
   
   
   root 'static_pages#home'
