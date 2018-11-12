@@ -11,9 +11,11 @@ gem 'faker'
 gem 'will_paginate'
 gem 'will_paginate-bootstrap'
 gem 'nested_form'
+gem 'sqlite3', group: [:development, :test]
+gem 'pg', group: :production
 
 group :development do
-  gem 'sqlite3'
+  # gem 'sqlite3'
 end
 
 gem 'sass-rails'
