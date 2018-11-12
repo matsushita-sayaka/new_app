@@ -9,7 +9,7 @@
     <div class="row">
         <div class="col-sm-4 text-center">
             <% if @user.image? %>
-                <%= image_tag @user.image.thumb.url, class: 'show-user-face-img' %>
+                <%= image_tag @user.image.post.url, class: 'show-user-face-img' %>
             <% else %>
                 <%= image_tag 'user/user-face.png', class: 'show-user-face-img' %>
             <% end %>

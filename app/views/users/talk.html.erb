@@ -2,7 +2,8 @@
 <%= image_tag 'user/user-line.png', class: 'user-line-img' %>
 <div class="container">
     <div class="row talk">
-        <p class="title">Talk Room</p>
+        <p class="title" class: "btn talk-submit">Talk Room</p>
+        <a href="#message" class="btn to-message">messageを記入</a>
         <ul>
             <%= render partial: 'users/talk', collection: @talks %>
         </ul>
@@ -16,8 +17,9 @@
                 <%= f.label :message, class: "control-label" %>
                 <%= f.text_area :message, autofocus: true, class: "form-control" %>
             </div>
-            <div class="col-md-3 col-md-offset-9">
+            <div class="col-md-3 col-md-offset-9" id="message">
             <%= f.submit "メッセージを送る", class: "btn talk-submit" %>
+            </div>
         <% end %>
     </div>
 </div>

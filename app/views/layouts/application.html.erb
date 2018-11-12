@@ -89,17 +89,20 @@
         $(this).find('span').text('- close');
       }
       });
-      // var count = setInterval(changeImg, 2000);//2秒間隔
-      // i = 1;
-      // function changeImg(){
-      //     $("#top-img").children("img").attr("src","/home/img/img-" + i + ".jpg");
-      //     if(i <= 2){
-      //         i++;
-      //     }
-      //     else{
-      //         i = 1;
-      //     }
-      // }
+      
+      var count = setInterval(changeImg, 3000);//2秒間隔
+      i = 1;
+      function changeImg(){
+          $("#top-img").children("img").attr("src","/assets/home/img/img-" + i + ".jpg");
+          if(i <= 2){
+              i++;
+          }
+          else{
+              i = 1;
+          }
+      }
+      
+      
   });
 </script>
 </body>

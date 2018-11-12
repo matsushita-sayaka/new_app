@@ -4,4 +4,5 @@ class Talk < ActiveRecord::Base
     
     validates :written_user, presence: true
     validates :receiver_user, presence: true
+    validates :message, presence: true
 end

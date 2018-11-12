@@ -1,9 +1,10 @@
-<li class="talk-box">
+
+<li class="talk-box" id="talk <%= talk.id %>">
     <% user = User.find(talk.written_user_id) %>
     <% if talk.written_user_id == current_user.id %>
         <div class="row">
             <span class="timestamp">Writtend <%= time_ago_in_words(talk.created_at) %> ago</span></br>
-            <div class="col-sm-10 text-right talk-fram-user">
+            <div class="col-sm-10 text-left talk-fram-user">
             <%= talk.message %>
             </div>
             <div class="col-sm-2 talk-face text-center">
