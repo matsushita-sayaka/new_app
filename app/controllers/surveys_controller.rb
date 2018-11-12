@@ -4,7 +4,7 @@ before_action :authenticate_user!
     def create
         @survey = current_user.surveys.new(survey_params)
         if @survey.save
-            redirect_to :back
+            redirect_back(fallback_location: root_path)
         end
     end
     
