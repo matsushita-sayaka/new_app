@@ -10,13 +10,13 @@
         <%= f.label :category %><br />
         <%= f.select :category, ["がくしゅう","けんこう","りょうり","おでかけ","くらし","りょこう","etc..."], :selected => @post.category, :class => 'category' %>
       </div>
-      <div class="field">
+      <div class="field break">
         <%= f.label :title %><br />
         <%= f.text_field :title %>
       </div>
-      <div class="field">
+      <div class="field break">
         <%= f.label :main_content %><br />
-        <%= f.text_field :main_content %>
+        <%= f.text_area :main_content %>
       </div>
       <p>●投稿詳細：</p>
       <%= f.fields_for :post_details do |m| %>
@@ -25,9 +25,9 @@
           <%= m.file_field :image %>
           <%= m.hidden_field :image_cache %>
         </div>
-        <div class="field">
+        <div class="field ">
           <%= f.label :content %><br />
-          <%= m.text_field :content %>
+          <%= m.text_area :content %>
         </div>
         <div class="field to-remove">
           <%=m.link_to_remove 'Delete' %>

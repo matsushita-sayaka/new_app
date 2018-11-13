@@ -1,8 +1,8 @@
-<li>
+<li claa="post-contents">
     <% if detail.image? %>
         <%= image_tag detail.image.post.url %>
     <% else %>
-        <%= image_tag 'post/index-sample.png', class: 'index-sample-img' %>
+        <%= image_tag 'post/photo.png', width: "50%" %>
     <% end %>
-    <p class="detail-content"><%= detail.content %></p>
+    <p class="detail-content break"><%= detail.content %></p>
 </li>

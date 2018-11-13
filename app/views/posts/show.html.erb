@@ -22,8 +22,8 @@
     </div>
     <div class="row">
         <div class="col-sm-10">
-            <p class="j-title"><%= @post.title %></p>
-            <p class="main-content"><%= @post.main_content %></p>
+            <p class="j-title break"><%= @post.title %></p>
+            <p class="main-content break"><%= @post.main_content %></p>
         </div>
         <div class="col-sm-2 text-right like-box likes-content">
             <p class="category"><%= @post.category %></p>
@@ -49,17 +49,12 @@
         </ul>
     <% end %>
 
-    <p class="post-comment"><span>COMMENT</span></p>
+    <p class="post-comment">COMMENT <%= image_tag 'post/comment.png', class: 'show-like-img' %></p>
     
     <% if @comments.any? %>
-        <% @comments.each do |comment| %>
-            <div class="col-sm-8">
-                <%= comment.content %>
-            </div>
-            <div class="col-sm-4">
-                <%= comment.user.name %>
-            </div>
-        <% end %>
+        <ul>
+            <%= render partial: 'posts/comment', collection: @comments %>
+        </ul>
     <% end %>
     
     

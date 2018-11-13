@@ -3,10 +3,12 @@ namespace :db do
   task populate: :environment do
     make_users
     make_posts
+    make_comments
     make_recipes
     make_likes
     make_relationships
     make_sentences
+    make_ingredients
   end
 
 
@@ -35,7 +37,16 @@ namespace :db do
       title = "タイトル"
       category = "がくしゅう"
       main_content = Faker::Lorem.sentence(5)
-      users.each { |user| user.posts.create!(main_content: main_content, title: title, category: category) }
+      content = Faker::Lorem.sentence(5)
+      users.each { |user| user.posts.create!(main_content: main_content, title: title, category: category, content: content) }
+    end
+  end
+  
+  def make_comments
+    users = User.all(limit: 6)
+    50.times do
+      content = Faker::Lorem.sentence(5)
+      users.each { |user| user.comments.create!(post_id: 1, content: content) }
     end
   end
   
@@ -66,7 +77,74 @@ namespace :db do
     end
   end
   
-  
+  def make_ingredients
+     Ingredient.create!(user_id: 1 ,check_box: "", recipe_id: 1)
+     Ingredient.create!(user_id: 1 ,check_box: 1, recipe_id: 2)
+     Ingredient.create!(user_id: 1 ,check_box: 1, recipe_id: 3)
+     Ingredient.create!(user_id: 1 ,check_box: "", recipe_id: 4)
+     Ingredient.create!(user_id: 1 ,check_box: 1, recipe_id: 5)
+     Ingredient.create!(user_id: 1 ,check_box: "", recipe_id: 6)
+     Ingredient.create!(user_id: 1 ,check_box: 1, recipe_id: 7)
+     Ingredient.create!(user_id: 1 ,check_box: 1, recipe_id: 8)
+     Ingredient.create!(user_id: 1 ,check_box: "", recipe_id: 9)
+     Ingredient.create!(user_id: 1 ,check_box: 1, recipe_id: 10)
+     Ingredient.create!(user_id: 1 ,check_box: "", recipe_id: 11)
+     Ingredient.create!(user_id: 1 ,check_box: 1, recipe_id: 12)
+     Ingredient.create!(user_id: 1 ,check_box: 1, recipe_id: 13)
+     Ingredient.create!(user_id: 1 ,check_box: 1, recipe_id: 14)
+     Ingredient.create!(user_id: 1 ,check_box: "", recipe_id: 15)
+     Ingredient.create!(user_id: 1 ,check_box: "", recipe_id: 16)
+     Ingredient.create!(user_id: 1 ,check_box: "", recipe_id: 17)
+     Ingredient.create!(user_id: 1 ,check_box: "", recipe_id: 18)
+     Ingredient.create!(user_id: 1 ,check_box: 1, recipe_id: 19)
+     Ingredient.create!(user_id: 1 ,check_box: "", recipe_id: 20)
+     Ingredient.create!(user_id: 1 ,check_box: 1, recipe_id: 21)
+     Ingredient.create!(user_id: 1 ,check_box: 1, recipe_id: 22)
+     Ingredient.create!(user_id: 1 ,check_box: 1, recipe_id: 23)
+     Ingredient.create!(user_id: 1 ,check_box: 1, recipe_id: 24)
+     Ingredient.create!(user_id: 1 ,check_box: "", recipe_id: 25)
+     Ingredient.create!(user_id: 1 ,check_box: 1, recipe_id: 26)
+     Ingredient.create!(user_id: 1 ,check_box: "", recipe_id: 27)
+     Ingredient.create!(user_id: 1 ,check_box: 1, recipe_id: 28)
+     Ingredient.create!(user_id: 1 ,check_box: "", recipe_id: 29)
+     Ingredient.create!(user_id: 1 ,check_box: 1, recipe_id: 30)
+     Ingredient.create!(user_id: 1 ,check_box: 1, recipe_id: 31)
+     Ingredient.create!(user_id: 1 ,check_box: 1, recipe_id: 32)
+     Ingredient.create!(user_id: 1 ,check_box: 1, recipe_id: 33)
+     Ingredient.create!(user_id: 1 ,check_box: 1, recipe_id: 34)
+     Ingredient.create!(user_id: 1 ,check_box: 1, recipe_id: 35)
+     Ingredient.create!(user_id: 1 ,check_box: "", recipe_id: 36)
+     Ingredient.create!(user_id: 1 ,check_box: 1, recipe_id: 37)
+     Ingredient.create!(user_id: 1 ,check_box: 1, recipe_id: 38)
+     Ingredient.create!(user_id: 1 ,check_box: "", recipe_id: 39)
+     Ingredient.create!(user_id: 1 ,check_box: 1, recipe_id: 40)
+     Ingredient.create!(user_id: 1 ,check_box: "", recipe_id: 41)
+     Ingredient.create!(user_id: 1 ,check_box: "", recipe_id: 42)
+     Ingredient.create!(user_id: 1 ,check_box: 1, recipe_id: 43)
+     Ingredient.create!(user_id: 1 ,check_box: 1, recipe_id: 44)
+     Ingredient.create!(user_id: 1 ,check_box: 1, recipe_id: 45)
+     Ingredient.create!(user_id: 1 ,check_box: 1, recipe_id: 46)
+     Ingredient.create!(user_id: 1 ,check_box: 1, recipe_id: 47)
+     Ingredient.create!(user_id: 1 ,check_box: 1, recipe_id: 48)
+     Ingredient.create!(user_id: 1 ,check_box: 1, recipe_id: 49)
+     Ingredient.create!(user_id: 1 ,check_box: "", recipe_id: 50)
+     Ingredient.create!(user_id: 1 ,check_box: 1, recipe_id: 51)
+     Ingredient.create!(user_id: 1 ,check_box: "", recipe_id: 52)
+     Ingredient.create!(user_id: 1 ,check_box: 1, recipe_id: 53)
+     Ingredient.create!(user_id: 1 ,check_box: 1, recipe_id: 54)
+     Ingredient.create!(user_id: 1 ,check_box: 1, recipe_id: 55)
+     Ingredient.create!(user_id: 1 ,check_box: 1, recipe_id: 56)
+     Ingredient.create!(user_id: 1 ,check_box: 1, recipe_id: 57)
+     Ingredient.create!(user_id: 1 ,check_box: "", recipe_id: 58)
+     Ingredient.create!(user_id: 1 ,check_box: 1, recipe_id: 59)
+     Ingredient.create!(user_id: 1 ,check_box: 1, recipe_id: 60)
+     Ingredient.create!(user_id: 1 ,check_box: "", recipe_id: 61)
+     Ingredient.create!(user_id: 1 ,check_box: "", recipe_id: 62)
+     Ingredient.create!(user_id: 1 ,check_box: 1, recipe_id: 63)
+     Ingredient.create!(user_id: 1 ,check_box: "", recipe_id: 64)
+     
+    
+  end
     
   def make_recipes
     Recipe.create!(ingredient:"豚ひき肉",amount: "約600g",prepare: "",breakdown: "(300ｇ+300ｇ)",menu_title: "2018年11月1週目")
@@ -164,31 +242,5 @@ namespace :db do
     Sentence.create!(proverb: "●考える術を教えるべきで、考えたことを教えるべきではない。", speaker: "◯グルリット")
     Sentence.create!(proverb: "●子供には批評よりも手本が必要である。", speaker: "◯ジューベル")
     Sentence.create!(proverb: "●育児くらい崇高で素晴らしい仕事はない。", speaker: "◯ソニーの創業者・井深大")
-      # sentences = [
-      #   ["●両親がひたむきに生きる姿自体が、どんな幼い子にも素晴らしい影響を与えるんです", "◯ソニーの創業者・井深大"],
-      #   ["●働くお母さんたちは、出かける前に8秒間抱きしめてあげなさい", "◯ソニーの創業者・井深大"],
-      #   ["●子供を不幸にする一番確実な方法は、いつでも、なんでも手に入れられるようにしてやる事である", "◯哲学者のジャン＝ジャック・ルソー"],
-      #   ["●子供達がケンカをしていたら、ケンカをしている理由だけ聞いて、あとは放っておけばいい。そうすれば子供達は、自分達がなぜケンカをしていたのか？ということを考えざるをえなくなる", "◯実業家の勝政行"],
-      #   ["●母の前で平気にするいたずらは、信頼感のあらわれ", "◯子育てにとても大切な27のヒント—クレヨンしんちゃん親子学"],
-      #   ["●ひまはまだ小さいからみんなが守ってあげなきゃダメなんだ。オマエもそうやって大きくなったんだよ", "◯アニメ『クレヨンしんちゃん』の野原ひろし"],
-      #   ["●究極の育児は、夫婦が仲良くしていること", "◯つるの剛士ナレーションのドキュメンタリー映画『うまれる』"],
-      #   ["●一緒に本を読むことは、親子の絆を深め、本の内容に対する子供の理解を深める", "◯子供発育専門家のマルタ・ホッペ"],
-      #   ["●認めてあげれば、子どもは自分が好きになる", "◯アメリカの子育てカウンセラー・ドロシー・ロー・ノルト"],
-      #   ["●子供たちに何ができるのか知りたければ、彼らにモノを与えるのをやめるべきだ。", "◯ノーマン・ダグラス"],
-      #   ["●子供は親の言うことはきかないが、親のする通りにはするものです。親の生き方こそ子供にとって最高の教材です。", "◯ジョセフ・マーフィー"],
-      #   ["●両親がひたむきに生きる姿自体が、どんな幼い子にも素晴らしい影響を与えるのです。", "◯ソニーの創業者・井深大"],
-      #   ["●よりかかるべき人ではなく、よりかかることを不必要にさせるべき人。それが親である。", "◯Ｄ･Ｃフィシャー"],
-      #   ["●人柄や能力は、子供のころの体験が大事。好奇心や冒険心を育てることが、豊かな人間を作るのだ。"," ◯ソニーの創業者・井深大"],
-      #   ["●子供たちを励まし、彼らの夢を明確にしてその目標に向かって導いてやるのが大人の役割です。", "◯アーノルド・シュワルツネッガー"],
-      #   ["●大切なのは、問うのをやめないことです。好奇心は、それ自体存在理由を持っているのです。", "◯アインシュタイン"],
-      #   ["●考える術を教えるべきで、考えたことを教えるべきではない。", "◯グルリット"],
-      #   ["●子供には批評よりも手本が必要である。", "◯ジューベル"],
-      #   ["●育児くらい崇高で素晴らしい仕事はない。", "◯ソニーの創業者・井深大"]
-      #   ]
-        
-        
-      # sentences.each do |sentence, speaker|
-      #   Sentence.create(proverb: sentence, speaker: speaker)
-      # end
   end
 end

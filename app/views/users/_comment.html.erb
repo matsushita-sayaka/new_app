@@ -1,0 +1,7 @@
+<li>
+    <% post = Post.find_by(id: comment.post_id) %>
+    <%= image_tag 'post/comment.png', class: 'show-like-img' %>
+    <span class="break">■ <%= link_to post.title, post_path(post)  %></span>
+    <span class="break"><%= post.main_content %></span>
+    <p class="text-right break">☆ <%= comment.content %></p>
+</li>

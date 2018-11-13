@@ -52,7 +52,7 @@
     .category {
         position: absolute;
         bottom: 70px;
-        right: 35px;
+        right: 45px;
         z-index: 10;
         font-size: 10px;
     }
@@ -82,6 +82,11 @@
     }
 }
 
+.likes-info {
+    font-size: 13px;
+    @include fram(1px, #ccc);
+    padding: 10px;
+}
 
 .post-index li {
     border-bottom: dashed 1px #ccc;
@@ -131,35 +136,17 @@
 }
 
 .post-comment {
-  position: relative;
-  text-align: center;
-  font-family: Papyrus;
-  span {
-      font-size: 20px;
-      position: relative;
-      z-index: 2;
-      display: inline-block;
-      margin: 0 2.5em;
-      padding: 0 1em;
-      background-color: #fff;
-      text-align: left;
-    }
-    &::before {
-  position: absolute;
-  top: 50%;
-  z-index: 1;
-  content: '';
-  display: block;
-  width: 100%;
-  height: 1px;
-  background-color: #ccc;
+    text-align: center;
+    font-family: Papyrus;
+    font-size: 20px;
 }
-}
+
+
 
 
 // new
 
-.post-new input {
+.post-new input, textarea {
     width: 100%;
     border-radius: 5px;
 }
@@ -183,3 +170,4 @@
     width: 100%;
     margin-top: 20px;
 }
+

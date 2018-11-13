@@ -13,8 +13,8 @@
                     <%= image_tag 'post/photo.png', class: "photo-img" %>
                 <% end %>
             </div>
-            <div class="col-md-7 col-sm-9 post-content">
-                <%= link_to post.title, post %></br></br>
+            <div class="col-md-7 col-sm-9 post-content break">
+                ■ <%= link_to post.title, post %></br></br>
                 <%= post.main_content %></br></br>
                 <% if post.user.image? %>
                     <%= image_tag post.user.image.thumb.url %>
@@ -24,7 +24,7 @@
                 <%= link_to post.user.name, user_path(post.user) %>
                 <span class="timestamp">　　　Posted <%= time_ago_in_words(post.created_at) %> ago</span>
             </div>
-            <div class="col-sm-2 text-right like-box likes-content">
+            <div class="col-md-2 col-sm-2 text-right like-box likes-content">
                 <p class="category"><%= post.category %></p>
                 <%= image_tag 'post/category.png', class: 'category-img' %>
                 <p class="likes-count"><%= post.likes.count %></p>

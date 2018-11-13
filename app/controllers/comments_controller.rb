@@ -5,7 +5,7 @@ class CommentsController < ApplicationController
       @comment = current_user.comments.new(comment_params)
       if @comment.save
           flash[:success] = "コメントしました"
-          redirect_to :back
+          redirect_back(fallback_location: root_path)
       else
           render post_path
       end

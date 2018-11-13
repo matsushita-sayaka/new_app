@@ -13,4 +13,8 @@ class Post < ActiveRecord::Base
     default_scope -> { order('created_at DESC') }
     
     validates :user_id, presence: true
+    validates :category, presence: true
+    validates :title, presence: true
+    validates :main_content, presence: true
+    
 end

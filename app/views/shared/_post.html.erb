@@ -5,7 +5,7 @@
             <% if detail.image.present? %>
                 <%= image_tag detail.image.post.url, class: 'post-img' %></br>
             <% else %>
-                <%= image_tag 'post/index-sample.png', class: 'index-sample-img' %></br>
+                <%= image_tag 'post/photo.png', class: 'shared-photo-img' %></br>
             <% end %>
         <% else %>
             <%= image_tag 'post/photo.png', class: "shared-photo-img" %>

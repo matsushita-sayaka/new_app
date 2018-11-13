@@ -98,14 +98,7 @@
             <div id="likes" class="tab-pane">
                 <% if @user.likes.any? %>
                     <ul class="post-index">
-                        <% @likes.each do |like| %>
-                            <% post = Post.find_by(id: like.post_id) %>
-                            <li>
-                                <%= image_tag 'post/like.png', class: 'show-like-img' %>
-                                <%= link_to post.title, post_path(post)  %>
-                                <%= post.main_content %>
-                            </li>
-                        <% end %>
+                        <%= render partial: 'users/like', collection: @likes %>
                     </ul>
                 <% end %>
                 <%= will_paginate @likes, renderer: BootstrapPagination::Rails %>
@@ -113,15 +106,7 @@
             <div id="comments" class="tab-pane">
                 <% if @user.comments.any? %>
                     <ul class="post-index">
-                        <% @comments.each do |comment| %>
-                            <% post = Post.find_by(id: comment.post_id) %>
-                            <li>
-                                <%= image_tag 'post/comment.png', class: 'show-like-img' %>
-                                <%= link_to post.title, post_path(post)  %>
-                                <%= post.main_content %>
-                                <p class="text-right"><%= comment.content %></p>
-                            </li>
-                        <% end %>
+                        <%= render partial: 'users/comment', collection: @comments %>
                     </ul>
                 <% end %>
                 <%= will_paginate @comments, renderer: BootstrapPagination::Rails %>

@@ -16,7 +16,7 @@ class IngredientsController < ApplicationController
  
   def destroy
     current_user.ingredients.where(recipe_id: 1..64).destroy_all
-    redirect_to :back
+    redirect_back(fallback_location: root_path)
   end
   
   private
