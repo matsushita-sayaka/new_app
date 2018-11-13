@@ -16,6 +16,7 @@ gem 'pg', group: :production
 gem 'bootsnap', require: false
 gem 'aws-sdk-s3', require: false
 gem 'puma'
+gem 'listen'
 
 group :development do
   # gem 'sqlite3'
