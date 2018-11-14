@@ -1,4 +1,4 @@
-class CreatePostDetails < ActiveRecord::Migration
+class CreatePostDetails < ActiveRecord::Migration[5.1]
   def change
     create_table :post_details do |t|
       t.integer :post_id
