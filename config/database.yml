@@ -19,8 +19,7 @@ test:
   timeout: 5000
 
 production:
-#半角スペース２個分の空白を開ける
-  <<: *default
-  adapter: postgresql
-  encoding: unicode
+  default: &default
+  adapter: sqlite3
   pool: 5
+  timeout: 5000
