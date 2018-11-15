@@ -19,9 +19,9 @@ gem 'bootsnap', require: false
 gem 'puma'
 gem 'listen'
 
-group :development do
+# group :development do
   # gem 'sqlite3'
-end
+# end
 
 gem 'sass-rails'
 gem 'uglifier'
@@ -29,7 +29,6 @@ gem 'coffee-rails'
 gem 'jquery-rails'
 gem 'turbolinks'
 gem 'jbuilder'
-gem 'bundler', '2.0.0.pre.1'
 
 group :doc do
   gem 'sdoc', require: false
