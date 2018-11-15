@@ -1,17 +1,11 @@
 CarrierWave.configure do |config|
   config.fog_credentials = {
     provider: 'AWS',
-    aws_access_key_id: ENV['ACCESS_KEY_ID'],
-    aws_secret_access_key: ENV['SECRET_ACCESS_KEY'],
-    region: 'us-east-2'#リージョンをUS以外にしたかたはそのリージョンに変更
+    aws_access_key_id: ENV['AWS_ACCESS_KEY_ID'],
+    aws_secret_access_key: ENV['AWS_SECRET_ACCESS_KEY'],
+    region: ENV['AWS_REGION']
   }
 
-    case Rails.env
-    when 'development'
-        config.fog_directory  = 'create-box'
-        config.asset_host = 'https://s3.amazonaws.com/create-box'
-    when 'production'
-        config.fog_directory  = 'create-box'
-        config.asset_host = 'https://s3.amazonaws.com/create-box'
-    end
+  config.fog_directory  = 'create-box'
+  config.cache_storage = :fog
 end
