@@ -1,4 +1,4 @@
-class Talk < ActiveRecord::Base
+class Talk < ApplicationRecord
     belongs_to :written_user, class_name: 'User', foreign_key: 'written_user_id'
     belongs_to :receiver_user, class_name: 'User', foreign_key: 'receiver_user_id'
     

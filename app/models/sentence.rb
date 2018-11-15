@@ -1,2 +1,2 @@
-class Sentence < ActiveRecord::Base
+class Sentence < ApplicationRecord
 end
