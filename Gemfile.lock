@@ -424,7 +424,6 @@ PLATFORMS
 DEPENDENCIES
   bootsnap
   bootstrap-sass
-  bundler (= 2.0.0.pre.1)
   carrierwave
   coffee-rails
   devise
