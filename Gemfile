@@ -13,7 +13,7 @@ gem 'will_paginate'
 gem 'will_paginate-bootstrap'
 gem 'nested_form'
 gem 'sqlite3', group: [:development, :test]
-gem 'pg', group: :production
+gem 'pg', '~> 0.20', group: :production
 gem 'bootsnap', require: false
 # gem 'aws-sdk-s3', require: false
 gem 'puma'
