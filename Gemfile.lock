@@ -234,7 +234,7 @@ GEM
     fog-voxel (0.1.0)
       fog-core
       fog-xml
-    fog-vsphere (2.4.0)
+    fog-vsphere (2.5.0)
       fog-core
       rbvmomi (~> 1.9)
     fog-xenserver (1.0.0)
@@ -407,8 +407,8 @@ GEM
     unf (0.1.4)
       unf_ext
     unf_ext (0.0.7.5)
-    warden (1.2.7)
-      rack (>= 1.0)
+    warden (1.2.8)
+      rack (>= 2.0.6)
     websocket-driver (0.7.0)
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.3)
