@@ -15,9 +15,9 @@
             <%= image_tag 'home/more-info.png', class: 'more-info-img' %><span>+ more info</span>
             <div class="more-info">
                 <%= post.main_content %><br/>
-                <% if detail.present? %>
-                    <%= detail.content %><br/>
-                <% end %>
+                <!--<% if detail.present? %>-->
+                <!--    <%= detail.content %><br/>-->
+                <!--<% end %>-->
                 <% if signed_in? %>
                     <%= link_to "続きを見る", post %>
                 <% else %>

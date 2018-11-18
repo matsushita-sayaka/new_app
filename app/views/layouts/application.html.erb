@@ -10,8 +10,9 @@
     <![endif]-->
 </head>
 <body>
-  <%= render 'layouts/header' %>
-    
+  <div class="header">
+    <%= render 'layouts/header' %>
+  </div>  
     <% flash.each do |key, value| %>
       <div class="alert-<%= bootstrap_class_for(key) %> text-center"><%= value %></div>
     <% end %>

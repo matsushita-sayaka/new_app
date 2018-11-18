@@ -35,6 +35,10 @@ $font-title: 'Wawati SC', 'Bradly Hand';
     }
 }
 
+.header a{
+      text-decoration: none;
+    }
+
 .header-img {
     width: 50px;
 }
@@ -47,7 +51,7 @@ $font-title: 'Wawati SC', 'Bradly Hand';
         font-family: $font-title;
     }
 }
-
+    
 .back-img {
     width: 100%;
 }

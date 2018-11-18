@@ -6,6 +6,15 @@ CarrierWave.configure do |config|
     region: ENV['AWS_REGION']
   }
 
-  config.fog_directory  = 'create-box'
-  config.cache_storage = :fog
+  # config.fog_directory  = 'create-box'
+  # config.cache_storage = :fog
+  
+    case Rails.env
+      when 'development'
+          config.fog_directory  = 'create-box'
+          config.asset_host = 'https://s3.amazonaws.com/create-box'
+      when 'production'
+          config.fog_directory  = 'create-box'
+          config.asset_host = 'https://s3.amazonaws.com/create-box'
+    end
 end
