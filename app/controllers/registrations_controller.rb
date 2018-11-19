@@ -5,14 +5,14 @@ class RegistrationsController < Devise::RegistrationsController
         user_path(resource)
     end
     
+    def after_sign_in_path_for(resource)
+        user_path(current_user.id)
+    end
+    
     private
     
       def sign_up_params
         params.require(:user).permit(:name, :email, :password, :password_confirmation, :image, :message)
-      end
-      
-      def after_sign_in_path_for(resource)
-        user_path(resource)
       end
       
       def account_update_params
