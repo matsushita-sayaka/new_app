@@ -12,9 +12,9 @@ CarrierWave.configure do |config|
     case Rails.env
       when 'development'
           config.fog_directory  = 'create-box'
-          config.asset_host = 'https://s3.amazonaws.com/create-box'
+          config.asset_host = 'https://create-box.s3.amazonaws.com'
       when 'production'
           config.fog_directory  = 'create-box'
-          config.asset_host = 'https://s3.amazonaws.com/create-box'
+          config.asset_host = 'https://create-box.s3.amazonaws.com'
     end
 end
