@@ -7,8 +7,4 @@ class ApplicationController < ActionController::Base
       user_path(current_user.id)
   end
   
-  def after_update_path_for(resource)
-      user_path(current_user.id)
-  end
-  
 end
