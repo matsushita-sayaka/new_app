@@ -1,7 +1,6 @@
 class UsersController < ApplicationController
   before_action :authenticate_user!
   before_action :admin_user, only: :destroy
-  before_action :friend_user, only: :talk
   
   def index
     @users = User.paginate(page: params[:page], per_page: 15)
@@ -91,13 +90,6 @@ class UsersController < ApplicationController
   
   def admin_user
     redirect_to(root_path) unless current_user.admin?
-  end
-  
-  def friend_user
-    @user = User.find(params[:id])
-    unless current_user || @user
-      redirect_to(root_path)
-    end
   end
   
 end
