@@ -8,8 +8,8 @@
             <%= talk.message %>
             </div>
             <div class="col-sm-2 talk-face text-center">
-                <% if @user.image? %>
-                    <%= image_tag @user.image.thumb.url, class: 'talk-user-face-img' %>
+                <% if current_user.image? %>
+                    <%= image_tag current_user.image.thumb.url, class: 'talk-user-face-img' %>
                 <% else %>
                     <%= image_tag 'user/user-face.png', class: 'talk-user-face-img' %>
                 <% end %>

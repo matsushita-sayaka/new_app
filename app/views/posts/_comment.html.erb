@@ -3,11 +3,12 @@
         ■ <%= comment.content %>
     </div>
     <div class="col-sm-4">
-        <% if @post.user.image? %>
-            <%= image_tag @post.user.image.thumb.url %>
+        <% user = User.find(comment.user_id)
+        <% if user.image? %>
+            <%= image_tag user.image.thumb.url %>
         <% else %>
             <%= image_tag 'user/user-face.png', class: 'index-user-face-img' %>
         <% end %>
-        <%= comment.user.name %>
+        <%= user.name %>
     </div>
 </li>
