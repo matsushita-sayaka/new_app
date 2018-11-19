@@ -5,9 +5,9 @@ class FriendsController < ApplicationController
     @friend = Friend.new(friend_params)
     if @friend.save
         flash[:success] = "友達リクエストを送りました"
-        redirect_to users_path
+        redirect_to user_path(current_user)
     else
-        render :back
+        redirect_to user_path(current_user)
     end
   end
   
