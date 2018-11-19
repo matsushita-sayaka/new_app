@@ -9,11 +9,7 @@ class IngredientsController < ApplicationController
   def create
     params[:ingredient].each do |ingredient|
       logger.debug("--------------------- 友達　#{ingredient}")
-      if check_box == 1
-        current_user.ingredients.create!(recipe_id: ingredient[:recipe_id], check_box: ingredient[:check_box])
-      else
-        current_user.ingredients.create!(recipe_id: ingredient[:recipe_id], check_box: 5)
-      end
+      current_user.ingredients.create!(recipe_id: ingredient[:recipe_id], check_box: ingredient[:check_box])
     end
     redirect_to user_path(current_user)
   end
