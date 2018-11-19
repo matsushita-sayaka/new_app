@@ -94,7 +94,9 @@ class UsersController < ApplicationController
   end
   
   def friend_user
-    redirect_to(root_path) unless current_user || @user
+    if !current_user || @user
+      redirect_to(root_path)
+    end
   end
   
 end
