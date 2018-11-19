@@ -5,11 +5,11 @@ class TalksController < ApplicationController
         @talk = Talk.new(talk_params)
         if @talk.save
             @user = User.find(@talk.receiver_user_id)
-            ContactMailer.sent(@user).deliver 
-            redirect_to("/users/#{@user.id}/talk")
+            # ContactMailer.sent(@user).deliver 
+            redirect_to("/users/#{@talk.receiver_user_id}/talk")
         else
             @talk = []
-            redirect_to("/users/#{@user.id}/talk")
+            redirect_to("/users/#{@talk.receiver_user_id}/talk")
         end
     end
     
