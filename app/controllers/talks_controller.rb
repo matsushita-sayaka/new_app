@@ -6,10 +6,10 @@ class TalksController < ApplicationController
         if @talk.save
             @user = User.find_by(@talk.receiver_user_id)
             # ContactMailer.sent(@user).deliver 
-            redirect_back(fallback_location: root_path)
+            redirect_back talk_user_path
         else
             @talk = []
-            redirect_back(fallback_location: root_path)
+            redirect_back talk_user_path
         end
     end
     
