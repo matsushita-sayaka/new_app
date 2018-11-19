@@ -2,11 +2,11 @@ namespace :db do
   desc "Fill database with sample data"
   task populate: :environment do
     make_users
-    make_posts
+    # make_posts
     # make_comments
     make_recipes
     # make_likes
-    make_relationships
+    # make_relationships
     make_sentences
     # make_ingredients
   end
@@ -31,15 +31,15 @@ namespace :db do
     end
   end
   
-  def make_posts
-    users = User.all(limit: 6)
-    50.times do
-      title = "タイトル"
-      category = "がくしゅう"
-      main_content = Faker::Lorem.sentence(5)
-      users.each { |user| user.posts.create!(main_content: main_content, title: title, category: category) }
-    end
-  end
+  # def make_posts
+  #   users = User.all(limit: 6)
+  #   50.times do
+  #     title = "タイトル"
+  #     category = "がくしゅう"
+  #     main_content = Faker::Lorem.sentence(5)
+  #     users.each { |user| user.posts.create!(main_content: main_content, title: title, category: category) }
+  #   end
+  # end
   
   # # def make_comments
   # #   users = User.all(limit: 6)
@@ -49,18 +49,18 @@ namespace :db do
   # #   end
   # # end
   
-  def make_relationships
-    users = User.all
-    user  = users.first
-    sample_users = users[2..50]
-    request_users      = users[3..40]
-    sample_users.each do |sample|
-      user.friends_of_user.create!(user_id_rq: sample.id, message: "hello!")
-    end
-    request_users.each do |u_request|
-      Friend.create!(user_id: u_request.id, user_id_rq: user.id, message: "hi")
-    end
-  end
+  # def make_relationships
+  #   users = User.all
+  #   user  = users.first
+  #   sample_users = users[2..50]
+  #   request_users      = users[3..40]
+  #   sample_users.each do |sample|
+  #     user.friends_of_user.create!(user_id_rq: sample.id, message: "hello!")
+  #   end
+  #   request_users.each do |u_request|
+  #     Friend.create!(user_id: u_request.id, user_id_rq: user.id, message: "hi")
+  #   end
+  # end
   
   # def make_likes
   #   users = User.all
