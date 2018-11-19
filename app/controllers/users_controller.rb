@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
   before_action :authenticate_user!
   before_action :admin_user, only: :destroy
+  before_action :friend_user, only: :talk
   
   def index
     @users = User.paginate(page: params[:page], per_page: 15)
@@ -84,13 +85,16 @@ class UsersController < ApplicationController
     @talk = Talk.new
     @all = Talk.where("(written_user_id = ?) OR (written_user_id = ?)",current_user.id, @user.id)
     @talks = @all.where("(receiver_user_id = ?) OR (receiver_user_id = ?)",current_user.id, @user.id)
-    
   end
   
   private
   
   def admin_user
     redirect_to(root_path) unless current_user.admin?
+  end
+  
+  def friend_user
+    redirect_to(root_path) unless current_user || @user
   end
   
 end
