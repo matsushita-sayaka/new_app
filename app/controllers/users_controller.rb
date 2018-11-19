@@ -16,7 +16,7 @@ class UsersController < ApplicationController
     @likes = @user.likes.paginate(page: params[:page])
     @like = Like.new
     @talk = Talk.new
-    @ingredients = @user.ingredients.where(recipe_id: 1..64).order(:check_box)
+    @ingredients = @user.ingredients.where(recipe_id: 1..64)
     @friend = current_user.friends_of_user.new
     @friends = []
     @request_friends = []

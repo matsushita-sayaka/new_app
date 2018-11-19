@@ -2,13 +2,13 @@ namespace :db do
   desc "Fill database with sample data"
   task populate: :environment do
     make_users
-    # make_posts
+    make_posts
     # make_comments
     make_recipes
     # make_likes
-    # make_relationships
+    make_relationships
     make_sentences
-    make_ingredients
+    # make_ingredients
   end
 
 
@@ -31,15 +31,15 @@ namespace :db do
     end
   end
   
-  # def make_posts
-  #   users = User.all(limit: 6)
-  #   50.times do
-  #     title = "タイトル"
-  #     category = "がくしゅう"
-  #     main_content = Faker::Lorem.sentence(5)
-  #     users.each { |user| user.posts.create!(main_content: main_content, title: title, category: category) }
-  #   end
-  # end
+  def make_posts
+    users = User.all(limit: 6)
+    50.times do
+      title = "タイトル"
+      category = "がくしゅう"
+      main_content = Faker::Lorem.sentence(5)
+      users.each { |user| user.posts.create!(main_content: main_content, title: title, category: category) }
+    end
+  end
   
   # # def make_comments
   # #   users = User.all(limit: 6)
@@ -49,18 +49,18 @@ namespace :db do
   # #   end
   # # end
   
-  # def make_relationships
-  #   users = User.all
-  #   user  = users.first
-  #   sample_users = users[2..50]
-  #   request_users      = users[3..40]
-  #   sample_users.each do |sample|
-  #     user.friends_of_user.create!(user_id_rq: sample.id, message: "hello!")
-  #   end
-  #   request_users.each do |u_request|
-  #     Friend.create!(user_id: u_request.id, user_id_rq: user.id, message: "hi")
-  #   end
-  # end
+  def make_relationships
+    users = User.all
+    user  = users.first
+    sample_users = users[2..50]
+    request_users      = users[3..40]
+    sample_users.each do |sample|
+      user.friends_of_user.create!(user_id_rq: sample.id, message: "hello!")
+    end
+    request_users.each do |u_request|
+      Friend.create!(user_id: u_request.id, user_id_rq: user.id, message: "hi")
+    end
+  end
   
   # def make_likes
   #   users = User.all
@@ -76,74 +76,72 @@ namespace :db do
   #   end
   # end
   
-  def make_ingredients
-     Ingredient.create!(user_id: 1 ,check_box: "", recipe_id: 1)
-     Ingredient.create!(user_id: 1 ,check_box: 1, recipe_id: 2)
-     Ingredient.create!(user_id: 1 ,check_box: 1, recipe_id: 3)
-     Ingredient.create!(user_id: 1 ,check_box: "", recipe_id: 4)
-     Ingredient.create!(user_id: 1 ,check_box: 1, recipe_id: 5)
-     Ingredient.create!(user_id: 1 ,check_box: "", recipe_id: 6)
-     Ingredient.create!(user_id: 1 ,check_box: 1, recipe_id: 7)
-     Ingredient.create!(user_id: 1 ,check_box: 1, recipe_id: 8)
-     Ingredient.create!(user_id: 1 ,check_box: "", recipe_id: 9)
-     Ingredient.create!(user_id: 1 ,check_box: 1, recipe_id: 10)
-     Ingredient.create!(user_id: 1 ,check_box: "", recipe_id: 11)
-     Ingredient.create!(user_id: 1 ,check_box: 1, recipe_id: 12)
-     Ingredient.create!(user_id: 1 ,check_box: 1, recipe_id: 13)
-     Ingredient.create!(user_id: 1 ,check_box: 1, recipe_id: 14)
-     Ingredient.create!(user_id: 1 ,check_box: "", recipe_id: 15)
-     Ingredient.create!(user_id: 1 ,check_box: "", recipe_id: 16)
-     Ingredient.create!(user_id: 1 ,check_box: "", recipe_id: 17)
-     Ingredient.create!(user_id: 1 ,check_box: "", recipe_id: 18)
-     Ingredient.create!(user_id: 1 ,check_box: 1, recipe_id: 19)
-     Ingredient.create!(user_id: 1 ,check_box: "", recipe_id: 20)
-     Ingredient.create!(user_id: 1 ,check_box: 1, recipe_id: 21)
-     Ingredient.create!(user_id: 1 ,check_box: 1, recipe_id: 22)
-     Ingredient.create!(user_id: 1 ,check_box: 1, recipe_id: 23)
-     Ingredient.create!(user_id: 1 ,check_box: 1, recipe_id: 24)
-     Ingredient.create!(user_id: 1 ,check_box: "", recipe_id: 25)
-     Ingredient.create!(user_id: 1 ,check_box: 1, recipe_id: 26)
-     Ingredient.create!(user_id: 1 ,check_box: "", recipe_id: 27)
-     Ingredient.create!(user_id: 1 ,check_box: 1, recipe_id: 28)
-     Ingredient.create!(user_id: 1 ,check_box: "", recipe_id: 29)
-     Ingredient.create!(user_id: 1 ,check_box: 1, recipe_id: 30)
-     Ingredient.create!(user_id: 1 ,check_box: 1, recipe_id: 31)
-     Ingredient.create!(user_id: 1 ,check_box: 1, recipe_id: 32)
-     Ingredient.create!(user_id: 1 ,check_box: 1, recipe_id: 33)
-     Ingredient.create!(user_id: 1 ,check_box: 1, recipe_id: 34)
-     Ingredient.create!(user_id: 1 ,check_box: 1, recipe_id: 35)
-     Ingredient.create!(user_id: 1 ,check_box: "", recipe_id: 36)
-     Ingredient.create!(user_id: 1 ,check_box: 1, recipe_id: 37)
-     Ingredient.create!(user_id: 1 ,check_box: 1, recipe_id: 38)
-     Ingredient.create!(user_id: 1 ,check_box: "", recipe_id: 39)
-     Ingredient.create!(user_id: 1 ,check_box: 1, recipe_id: 40)
-     Ingredient.create!(user_id: 1 ,check_box: "", recipe_id: 41)
-     Ingredient.create!(user_id: 1 ,check_box: "", recipe_id: 42)
-     Ingredient.create!(user_id: 1 ,check_box: 1, recipe_id: 43)
-     Ingredient.create!(user_id: 1 ,check_box: 1, recipe_id: 44)
-     Ingredient.create!(user_id: 1 ,check_box: 1, recipe_id: 45)
-     Ingredient.create!(user_id: 1 ,check_box: 1, recipe_id: 46)
-     Ingredient.create!(user_id: 1 ,check_box: 1, recipe_id: 47)
-     Ingredient.create!(user_id: 1 ,check_box: 1, recipe_id: 48)
-     Ingredient.create!(user_id: 1 ,check_box: 1, recipe_id: 49)
-     Ingredient.create!(user_id: 1 ,check_box: "", recipe_id: 50)
-     Ingredient.create!(user_id: 1 ,check_box: 1, recipe_id: 51)
-     Ingredient.create!(user_id: 1 ,check_box: "", recipe_id: 52)
-     Ingredient.create!(user_id: 1 ,check_box: 1, recipe_id: 53)
-     Ingredient.create!(user_id: 1 ,check_box: 1, recipe_id: 54)
-     Ingredient.create!(user_id: 1 ,check_box: 1, recipe_id: 55)
-     Ingredient.create!(user_id: 1 ,check_box: 1, recipe_id: 56)
-     Ingredient.create!(user_id: 1 ,check_box: 1, recipe_id: 57)
-     Ingredient.create!(user_id: 1 ,check_box: "", recipe_id: 58)
-     Ingredient.create!(user_id: 1 ,check_box: 1, recipe_id: 59)
-     Ingredient.create!(user_id: 1 ,check_box: 1, recipe_id: 60)
-     Ingredient.create!(user_id: 1 ,check_box: "", recipe_id: 61)
-     Ingredient.create!(user_id: 1 ,check_box: "", recipe_id: 62)
-     Ingredient.create!(user_id: 1 ,check_box: 1, recipe_id: 63)
-     Ingredient.create!(user_id: 1 ,check_box: "", recipe_id: 64)
-     
-    
-  end
+  # def make_ingredients
+  #   Ingredient.create!(user_id: 1 ,check_box: "", recipe_id: 1)
+  #   Ingredient.create!(user_id: 1 ,check_box: 1, recipe_id: 2)
+  #   Ingredient.create!(user_id: 1 ,check_box: 1, recipe_id: 3)
+  #   Ingredient.create!(user_id: 1 ,check_box: "", recipe_id: 4)
+  #   Ingredient.create!(user_id: 1 ,check_box: 1, recipe_id: 5)
+  #   Ingredient.create!(user_id: 1 ,check_box: "", recipe_id: 6)
+  #   Ingredient.create!(user_id: 1 ,check_box: 1, recipe_id: 7)
+  #   Ingredient.create!(user_id: 1 ,check_box: 1, recipe_id: 8)
+  #   Ingredient.create!(user_id: 1 ,check_box: "", recipe_id: 9)
+  #   Ingredient.create!(user_id: 1 ,check_box: 1, recipe_id: 10)
+  #   Ingredient.create!(user_id: 1 ,check_box: "", recipe_id: 11)
+  #   Ingredient.create!(user_id: 1 ,check_box: 1, recipe_id: 12)
+  #   Ingredient.create!(user_id: 1 ,check_box: 1, recipe_id: 13)
+  #   Ingredient.create!(user_id: 1 ,check_box: 1, recipe_id: 14)
+  #   Ingredient.create!(user_id: 1 ,check_box: "", recipe_id: 15)
+  #   Ingredient.create!(user_id: 1 ,check_box: "", recipe_id: 16)
+  #   Ingredient.create!(user_id: 1 ,check_box: "", recipe_id: 17)
+  #   Ingredient.create!(user_id: 1 ,check_box: "", recipe_id: 18)
+  #   Ingredient.create!(user_id: 1 ,check_box: 1, recipe_id: 19)
+  #   Ingredient.create!(user_id: 1 ,check_box: "", recipe_id: 20)
+  #   Ingredient.create!(user_id: 1 ,check_box: 1, recipe_id: 21)
+  #   Ingredient.create!(user_id: 1 ,check_box: 1, recipe_id: 22)
+  #   Ingredient.create!(user_id: 1 ,check_box: 1, recipe_id: 23)
+  #   Ingredient.create!(user_id: 1 ,check_box: 1, recipe_id: 24)
+  #   Ingredient.create!(user_id: 1 ,check_box: "", recipe_id: 25)
+  #   Ingredient.create!(user_id: 1 ,check_box: 1, recipe_id: 26)
+  #   Ingredient.create!(user_id: 1 ,check_box: "", recipe_id: 27)
+  #   Ingredient.create!(user_id: 1 ,check_box: 1, recipe_id: 28)
+  #   Ingredient.create!(user_id: 1 ,check_box: "", recipe_id: 29)
+  #   Ingredient.create!(user_id: 1 ,check_box: 1, recipe_id: 30)
+  #   Ingredient.create!(user_id: 1 ,check_box: 1, recipe_id: 31)
+  #   Ingredient.create!(user_id: 1 ,check_box: 1, recipe_id: 32)
+  #   Ingredient.create!(user_id: 1 ,check_box: 1, recipe_id: 33)
+  #   Ingredient.create!(user_id: 1 ,check_box: 1, recipe_id: 34)
+  #   Ingredient.create!(user_id: 1 ,check_box: 1, recipe_id: 35)
+  #   Ingredient.create!(user_id: 1 ,check_box: "", recipe_id: 36)
+  #   Ingredient.create!(user_id: 1 ,check_box: 1, recipe_id: 37)
+  #   Ingredient.create!(user_id: 1 ,check_box: 1, recipe_id: 38)
+  #   Ingredient.create!(user_id: 1 ,check_box: "", recipe_id: 39)
+  #   Ingredient.create!(user_id: 1 ,check_box: 1, recipe_id: 40)
+  #   Ingredient.create!(user_id: 1 ,check_box: "", recipe_id: 41)
+  #   Ingredient.create!(user_id: 1 ,check_box: "", recipe_id: 42)
+  #   Ingredient.create!(user_id: 1 ,check_box: 1, recipe_id: 43)
+  #   Ingredient.create!(user_id: 1 ,check_box: 1, recipe_id: 44)
+  #   Ingredient.create!(user_id: 1 ,check_box: 1, recipe_id: 45)
+  #   Ingredient.create!(user_id: 1 ,check_box: 1, recipe_id: 46)
+  #   Ingredient.create!(user_id: 1 ,check_box: 1, recipe_id: 47)
+  #   Ingredient.create!(user_id: 1 ,check_box: 1, recipe_id: 48)
+  #   Ingredient.create!(user_id: 1 ,check_box: 1, recipe_id: 49)
+  #   Ingredient.create!(user_id: 1 ,check_box: "", recipe_id: 50)
+  #   Ingredient.create!(user_id: 1 ,check_box: 1, recipe_id: 51)
+  #   Ingredient.create!(user_id: 1 ,check_box: "", recipe_id: 52)
+  #   Ingredient.create!(user_id: 1 ,check_box: 1, recipe_id: 53)
+  #   Ingredient.create!(user_id: 1 ,check_box: 1, recipe_id: 54)
+  #   Ingredient.create!(user_id: 1 ,check_box: 1, recipe_id: 55)
+  #   Ingredient.create!(user_id: 1 ,check_box: 1, recipe_id: 56)
+  #   Ingredient.create!(user_id: 1 ,check_box: 1, recipe_id: 57)
+  #   Ingredient.create!(user_id: 1 ,check_box: "", recipe_id: 58)
+  #   Ingredient.create!(user_id: 1 ,check_box: 1, recipe_id: 59)
+  #   Ingredient.create!(user_id: 1 ,check_box: 1, recipe_id: 60)
+  #   Ingredient.create!(user_id: 1 ,check_box: "", recipe_id: 61)
+  #   Ingredient.create!(user_id: 1 ,check_box: "", recipe_id: 62)
+  #   Ingredient.create!(user_id: 1 ,check_box: 1, recipe_id: 63)
+  #   Ingredient.create!(user_id: 1 ,check_box: "", recipe_id: 64)
+  # end
     
   def make_recipes
     Recipe.create!(ingredient:"豚ひき肉",amount: "約600g",prepare: "",breakdown: "(300ｇ+300ｇ)",menu_title: "2018年11月1週目")
