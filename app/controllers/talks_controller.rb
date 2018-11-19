@@ -3,8 +3,8 @@ class TalksController < ApplicationController
     
     def create
         @talk = Talk.new(talk_params)
-        @user = User.find(params[:id])
         if @talk.save
+            @user = User.find(@talk.receiver_user_id)
             ContactMailer.sent(@user).deliver 
             redirect_to talk_user(@user)
         else
