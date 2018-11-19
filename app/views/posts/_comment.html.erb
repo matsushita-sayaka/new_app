@@ -3,7 +3,7 @@
         ■ <%= comment.content %>
     </div>
     <div class="col-sm-4">
-        <% user = User.find(comment.user_id)
+        <% user = User.find(comment.user_id) %>
         <% if user.image? %>
             <%= image_tag user.image.thumb.url %>
         <% else %>
