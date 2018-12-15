@@ -34,3 +34,5 @@ gem 'jbuilder'
 group :doc do
   gem 'sdoc', require: false
 end
+
+gem 'ovirt-engine-sdk', '~> 4.2', '>= 4.2.5'
